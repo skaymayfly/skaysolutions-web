@@ -131,37 +131,62 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 .sh h2 span{color:var(--muted)}
 .sh p{margin-top:12px;max-width:520px;font-size:18px;line-height:1.45;color:var(--muted)}
 
-/* ---------- products ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;perspective:1200px}
-.card{position:relative;background:var(--paper);border-radius:26px;padding:22px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;gap:14px;
-  transform-style:preserve-3d;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
-.card:hover{box-shadow:0 26px 50px -22px rgba(10,40,110,.3)}
-.card .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .5s var(--ease);background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(191,218,255,.45),transparent 60%)}
-.card:hover .glare{opacity:1}
-.card .ic{width:64px;height:64px;border-radius:22.5%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 12px 22px -10px rgba(10,40,110,.55);transform:translateZ(30px)}
-.card .ic img{width:38px;height:38px;animation:drift 6s var(--ease) infinite}
-.card:nth-child(2) .ic img{animation-delay:-2s}.card:nth-child(3) .ic img{animation-delay:-4s}
-.card h3{font-size:22px;font-weight:600;letter-spacing:-.4px}
-.card .tl{font-size:15.5px;line-height:1.45;color:var(--muted)}
-.card .ft{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:6px}
-.card .price{font-size:20px;font-weight:600;letter-spacing:-.3px}
-.tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;letter-spacing:.02em;padding:5px 10px;border-radius:999px;background:rgba(43,115,243,.1);color:var(--sky-action)}
-.card.soon .ft .price{color:var(--muted);font-weight:500;font-size:16px}
-.card.soon h3::after{content:"";display:inline-block;width:64px;height:12px;margin-left:10px;border-radius:6px;vertical-align:2px;
-  background:linear-gradient(90deg,#eef2f8 0%,#dfe8f6 40%,#eef2f8 80%);background-size:200% 100%;animation:shimmer 2.4s linear infinite}
-@keyframes shimmer{to{background-position:-200% 0}}
-
+/* ---------- products (taste-skill: one quiet card, a lit panel, a real fragment cut by its edge) ---------- */
+.drop{display:grid;grid-template-columns:5fr 7fr;background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;min-height:440px}
+.drop .tx{padding:36px 32px 32px;display:flex;flex-direction:column}
+.drop .lb{font-size:13px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:8px}
+.drop .lb::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--live)}
+.drop h3{margin-top:14px;font-size:28px;line-height:1.15;font-weight:500;letter-spacing:-.6px}
+.drop p{margin-top:12px;font-size:16px;line-height:24px;color:rgba(0,0,0,.84);max-width:46ch}
+.drop .row{justify-content:flex-start;margin-top:auto;padding-top:28px}
+.drop .nx{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:16px;line-height:24px;color:rgba(0,0,0,.84)}
+.drop .nx b{font-weight:500}
+.panel{position:relative;margin:8px 8px 0 0;border-radius:12px 12px 0 0;overflow:hidden;background:linear-gradient(180deg,rgba(31,99,232,.55),rgba(43,115,243,.12) 45%,rgba(43,115,243,0) 70%),url(/assets/img/sky-panel.webp) center 60%/cover no-repeat,#5c9bff}
+.panel::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);pointer-events:none}
+.lock{position:absolute;left:0;right:0;top:34px;text-align:center;color:#fff;text-shadow:0 1px 12px rgba(10,40,110,.25)}
+.lock .d{font-size:15px;font-weight:600;letter-spacing:-.2px;opacity:.95}
+.lock .t{font-size:84px;line-height:1;font-weight:600;letter-spacing:-2px;margin-top:2px}
+.ntf{position:absolute;left:12%;width:min(420px,86%);border-radius:22px;padding:12px 14px;display:flex;gap:11px;align-items:flex-start;
+  background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 10px 30px -12px rgba(10,40,110,.35)}
+.ntf .ap{width:38px;height:38px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.ntf .ap img{width:22px;height:22px;filter:invert(1)}
+.ntf .bd{min-width:0;flex:1}
+.ntf .hd{display:flex;font-size:13px;line-height:18px;font-weight:600;letter-spacing:-.1px}
+.ntf .hd span{margin-left:auto;font-weight:400;color:#6e6e73;font-size:12px}
+.ntf .ms{font-size:13px;line-height:18px;color:#1d1d1f;letter-spacing:-.1px}
+.ntf.n1{top:190px;animation:ntf 7s var(--ease) infinite}
+.ntf.n2{top:262px;left:16%;opacity:.0;transform:scale(.94);animation:ntf2 7s var(--ease) infinite}
+@keyframes ntf{0%{transform:translateY(-14px);opacity:0}8%,100%{transform:none;opacity:1}}
+@keyframes ntf2{0%,18%{transform:translateY(-10px) scale(.94);opacity:0}28%,100%{transform:scale(1);opacity:1}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.card:hover{transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(10,40,110,.3)}
+.card .tx{padding:28px 28px 0}.card h3{font-size:20px;font-weight:500;letter-spacing:-.3px}.card p{margin-top:8px;font-size:16px;line-height:24px;color:rgba(0,0,0,.84)}
+.card .ft{display:flex;align-items:center;justify-content:space-between;padding:20px 28px 0}.card .price{font-size:20px;font-weight:500}
+.card .panel{margin:24px 8px 0;height:240px}.card .panel img{position:absolute;left:10%;top:28px;width:80%;border-radius:12px 12px 0 0;box-shadow:0 10px 30px -12px rgba(10,40,110,.35)}
+@media (max-width:820px){.drop{grid-template-columns:1fr}.drop .panel{height:400px;margin:0 8px}.lock .t{font-size:68px}}
 /* ---------- reels ---------- */
 .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .reel .chip{display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 16px 0 7px;border-radius:21px;background:var(--paper);box-shadow:var(--shadow-soft);font-weight:600;font-size:15.5px;letter-spacing:-.3px;margin-bottom:14px}
 .reel .chip img{width:28px;height:28px;border-radius:22.5%;padding:4px;background:#f3f5f9}
-.phone{position:relative;aspect-ratio:9/16;border-radius:36px;padding:8px;background:#0b0b0c;box-shadow:var(--shadow-float),inset 0 0 0 1.5px rgba(255,255,255,.08);
-  transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
-.reel:nth-child(1) .phone{--rot:-3deg}.reel:nth-child(2) .phone{--rot:0deg;--ty:-18px}.reel:nth-child(3) .phone{--rot:3deg}
-.reel .phone{transform:translateY(var(--ty,0)) rotate(var(--rot))}
-.reel:hover .phone{transform:translateY(calc(var(--ty,0px) - 10px)) rotate(0deg) scale(1.02);box-shadow:0 40px 70px -24px rgba(10,40,110,.4)}
-.phone video{width:100%;height:100%;object-fit:cover;border-radius:29px;background:#111}
-.phone::before{content:"";position:absolute;top:16px;left:50%;width:30%;height:22px;margin-left:-15%;border-radius:11px;background:#000;z-index:2}
+.phone{position:relative;aspect-ratio:9/19.2;border-radius:46px;padding:3px;
+  background:linear-gradient(135deg,#8d9198 0%,#e6e8eb 18%,#7c8087 34%,#c9ccd1 52%,#6f737a 70%,#dfe1e4 86%,#8a8e95 100%);
+  box-shadow:var(--shadow-float),0 1px 0 rgba(255,255,255,.6) inset;transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.phone .bz{position:relative;height:100%;border-radius:43px;background:#050506;padding:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.phone .scr{position:relative;height:100%;border-radius:37px;overflow:hidden;background:#000;isolation:isolate}
+.phone video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.phone .di{position:absolute;top:10px;left:50%;width:31%;height:24px;margin-left:-15.5%;border-radius:12px;background:#000;z-index:3;box-shadow:0 0 0 1px rgba(255,255,255,.04)}
+.phone .di::after{content:"";position:absolute;right:9px;top:7px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2b3a55,#0a0d14 60%)}
+.phone .sb{position:absolute;top:13px;left:0;right:0;z-index:2;display:flex;justify-content:space-between;padding:0 22px 0 26px;font:600 13px/18px var(--font);letter-spacing:-.2px;color:#000;mix-blend-mode:normal}
+.phone .sb.lt{color:#fff}
+.phone .sb i{display:flex;gap:4px;align-items:center;font-style:normal}
+.phone .sb svg{height:11px;width:auto;fill:currentColor}
+.phone .hi{position:absolute;bottom:7px;left:50%;width:36%;height:5px;margin-left:-18%;border-radius:3px;background:rgba(0,0,0,.55);z-index:2}
+.phone .hi.lt{background:rgba(255,255,255,.75)}
+.phone .gl{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:37px;background:linear-gradient(115deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 32%,rgba(255,255,255,0) 70%,rgba(255,255,255,.06) 100%)}
+.phone .k{position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#6c7077,#c8cbd0 60%,#7a7e85)}
+.phone .k1{left:-3px;top:17%;height:5.5%}.phone .k2{left:-3px;top:26%;height:9%}.phone .k3{left:-3px;top:37%;height:9%}.phone .k4{right:-3px;top:28%;height:14%}
+.reel:hover .phone{transform:translateY(-4px);box-shadow:0 44px 80px -26px rgba(10,40,110,.45)}
 .reel p{margin-top:16px;font-size:15.5px;line-height:1.45;color:var(--muted)}
 
 /* ---------- footer ---------- */
@@ -187,9 +212,8 @@ footer .row{justify-content:flex-start;margin-top:22px}
 /* ---------- reveal ---------- */
 [data-r]{opacity:0;filter:blur(8px);transform:translateY(18px);transition:opacity .9s var(--ease),filter .9s var(--ease),transform .9s var(--ease)}
 [data-r].in{opacity:1;filter:none;transform:none}
-.reel[data-r].in .phone{transform:translateY(var(--ty,0)) rotate(var(--rot))}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-r],h1 .w,.fl,.socials a{opacity:1!important;filter:none!important;transform:none!important}#plane,#flight{display:none}}
-@media (max-width:820px){.reels{grid-template-columns:1fr;max-width:330px;margin:0 auto;gap:40px}.reel .phone{--ty:0!important}.socials{transform:scale(.8);transform-origin:100% 0}.fl.hide-m{display:none}#plane{width:56px;height:56px;margin:-28px 0 0 -28px}.hero{padding:130px 0 60px;min-height:auto}.fl{transform-origin:center}.fl[data-depth="22"]{width:84px!important;top:16%!important}.fl[data-depth="34"]{width:58px!important;top:14%!important;right:2%!important}}
+@media (max-width:820px){.reels{grid-template-columns:1fr;max-width:330px;margin:0 auto;gap:40px}.socials{transform:scale(.8);transform-origin:100% 0}.fl.hide-m{display:none}#plane{width:56px;height:56px;margin:-28px 0 0 -28px}.hero{padding:130px 0 60px;min-height:auto}.fl{transform-origin:center}.fl[data-depth="22"]{width:84px!important;top:16%!important}.fl[data-depth="34"]{width:58px!important;top:14%!important;right:2%!important}}
 </style>
 </head>
 <body>
@@ -228,13 +252,26 @@ footer .row{justify-content:flex-start;margin-top:22px}
 <!-- Products -->
 <section id="produkty" class="wrap">
   <div class="sh" data-r><h2>produkty <span>od SKAY</span></h2><p>vlastní AI nástroje a balíčky. první drop právě chystám, sleduj IG.</p></div>
-  <div class="grid" id="grid"><article class="card soon" data-r><span class="glare"></span><span class="tag">brzy</span><div class="ic" style="background:#2B73F3"><img src="/assets/img/1f680.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #1</h3><p class="tl">první AI nástroj od SKAY. co to bude, ukážu nejdřív na IG.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="glare"></span><span class="tag">brzy</span><div class="ic" style="background:#5C9BFF"><img src="/assets/img/26a1.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #2</h3><p class="tl">balíček, se kterým si AI workflow nastavíš za odpoledne.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="glare"></span><span class="tag">brzy</span><div class="ic" style="background:#BFDAFF"><img src="/assets/img/2601-fe0f.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #3</h3><p class="tl">pro ty, co chtějí víc. zatím tajné.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article></div>
+  <div id="grid"><article class="drop" data-r>
+    <div class="tx">
+      <span class="lb">první drop se chystá</span>
+      <h3>vlastní AI nástroj,<br>na kterém teď makám.</h3>
+      <p>ukážu ho nejdřív na Instagramu. sleduj mě a dozvíš se o něm jako první.</p>
+      <div class="nx"><b>pak přijdou další:</b> balíčky a nástroje, se kterými si AI workflow nastavíš za odpoledne.</div>
+      <div class="row"><a class="btn btn-primary" data-cfg="instagram" href="https://www.instagram.com/">Sledovat na IG <span class="ar">→</span></a></div>
+    </div>
+    <div class="panel" aria-hidden="true">
+      <div class="lock"><div class="d">neděle 8. listopadu</div><div class="t">9:41</div></div>
+      <div class="ntf n1"><span class="ap"><img src="/assets/icons/instagram.svg" alt=""></span><div class="bd"><div class="hd">Instagram<span>teď</span></div><div class="ms"><b>SKAY</b> sdílí nový příspěvek: první drop je venku 🚀</div></div></div>
+      <div class="ntf n2"><span class="ap" style="background:#000"><img src="/assets/img/favicon.svg" alt="" style="filter:none;width:38px;height:38px;border-radius:9px"></span><div class="bd"><div class="hd">skaysolutions.app<span>teď</span></div><div class="ms">Drop #1 je venku. Mrkni na web.</div></div></div>
+    </div>
+  </article></div>
 </section>
 
 <!-- Reels -->
 <section id="reels" class="wrap">
   <div class="sh" data-r><h2>co ukazuju <span>na IG</span></h2><p>každý týden jeden nástroj nebo repo, které fakt pomůže. napíšeš slovo do komentářů a pošlu ti odkaz.</p></div>
-  <div class="reels" id="reelgrid"><article class="reel" data-r><span class="chip"><img src="/assets/icons/claude.svg" alt="" width="28" height="28" loading="lazy">Superpowers</span><div class="phone"><video muted loop playsinline preload="none" poster="/assets/reels/superpowers.jpg" aria-label="Ukázka reelu Superpowers"><source src="/assets/reels/superpowers.mp4" type="video/mp4"></video></div><p>Superpowers: doplněk, který z Claude Code udělá pečlivého inženýra.</p></article><article class="reel" data-r><span class="chip"><img src="/assets/icons/github.svg" alt="" width="28" height="28" loading="lazy">Taste Skill</span><div class="phone"><video muted loop playsinline preload="none" poster="/assets/reels/tasteskill.jpg" aria-label="Ukázka reelu Taste Skill"><source src="/assets/reels/tasteskill.mp4" type="video/mp4"></video></div><p>Taste Skill: skill, který AI zakáže dělat weby, co vypadají jako od AI.</p></article><article class="reel" data-r><span class="chip"><img src="/assets/icons/github.svg" alt="" width="28" height="28" loading="lazy">Kitchen</span><div class="phone"><video muted loop playsinline preload="none" poster="/assets/reels/kitchen.jpg" aria-label="Ukázka reelu Kitchen"><source src="/assets/reels/kitchen.mp4" type="video/mp4"></video></div><p>Kitchen: knihovna UI komponent, které vypadají jako od Applu.</p></article></div>
+  <div class="reels" id="reelgrid"><article class="reel" data-r><span class="chip"><img src="/assets/icons/claude.svg" alt="" width="28" height="28" loading="lazy">Superpowers</span><div class="phone"><span class="k k1"></span><span class="k k2"></span><span class="k k3"></span><span class="k k4"></span><div class="bz"><div class="scr"><video muted loop playsinline preload="none" poster="/assets/reels/superpowers.jpg" aria-label="Ukázka reelu Superpowers"><source src="/assets/reels/superpowers.mp4" type="video/mp4"></video><div class="sb lt"><span>9:41</span><i><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 5.7 9.2a3.3 3.3 0 0 1 4.6 0zM3.4 6.9a6.5 6.5 0 0 1 9.2 0l-1.4 1.4a4.5 4.5 0 0 0-6.4 0zM1 4.5a9.9 9.9 0 0 1 14 0l-1.4 1.4a7.9 7.9 0 0 0-11.2 0z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24.6" y="4" width="1.8" height="4" rx=".9" opacity=".45"/></svg></i></div><span class="di"></span><span class="hi lt"></span><span class="gl"></span></div></div></div><p>Superpowers: doplněk, který z Claude Code udělá pečlivého inženýra.</p></article><article class="reel" data-r><span class="chip"><img src="/assets/icons/github.svg" alt="" width="28" height="28" loading="lazy">Taste Skill</span><div class="phone"><span class="k k1"></span><span class="k k2"></span><span class="k k3"></span><span class="k k4"></span><div class="bz"><div class="scr"><video muted loop playsinline preload="none" poster="/assets/reels/tasteskill.jpg" aria-label="Ukázka reelu Taste Skill"><source src="/assets/reels/tasteskill.mp4" type="video/mp4"></video><div class="sb lt"><span>9:41</span><i><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 5.7 9.2a3.3 3.3 0 0 1 4.6 0zM3.4 6.9a6.5 6.5 0 0 1 9.2 0l-1.4 1.4a4.5 4.5 0 0 0-6.4 0zM1 4.5a9.9 9.9 0 0 1 14 0l-1.4 1.4a7.9 7.9 0 0 0-11.2 0z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24.6" y="4" width="1.8" height="4" rx=".9" opacity=".45"/></svg></i></div><span class="di"></span><span class="hi lt"></span><span class="gl"></span></div></div></div><p>Taste Skill: skill, který AI zakáže dělat weby, co vypadají jako od AI.</p></article><article class="reel" data-r><span class="chip"><img src="/assets/icons/github.svg" alt="" width="28" height="28" loading="lazy">Kitchen</span><div class="phone"><span class="k k1"></span><span class="k k2"></span><span class="k k3"></span><span class="k k4"></span><div class="bz"><div class="scr"><video muted loop playsinline preload="none" poster="/assets/reels/kitchen.jpg" aria-label="Ukázka reelu Kitchen"><source src="/assets/reels/kitchen.mp4" type="video/mp4"></video><div class="sb lt"><span>9:41</span><i><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 5.7 9.2a3.3 3.3 0 0 1 4.6 0zM3.4 6.9a6.5 6.5 0 0 1 9.2 0l-1.4 1.4a4.5 4.5 0 0 0-6.4 0zM1 4.5a9.9 9.9 0 0 1 14 0l-1.4 1.4a7.9 7.9 0 0 0-11.2 0z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24.6" y="4" width="1.8" height="4" rx=".9" opacity=".45"/></svg></i></div><span class="di"></span><span class="hi lt"></span><span class="gl"></span></div></div></div><p>Kitchen: knihovna UI komponent, které vypadají jako od Applu.</p></article></div>
 </section>
 </main>
 
@@ -260,7 +297,7 @@ const CONFIG = {
 /* Products. Add an object to sell something; `url` = Stripe payment link.
    While the list is empty, the page shows the "coming soon" cards. */
 const PRODUCTS = [
-  // { name:"Název", tagline:"Co to dělá jednou větou.", price:"490 Kč", icon:"/assets/img/26a1.png", color:"#2B73F3", url:"https://buy.stripe.com/...", tag:"Nové" },
+  // { name:"Název", tagline:"Co to dělá, jednou větou.", price:"490 Kč", image:"/assets/img/produkt.webp", url:"https://buy.stripe.com/..." },
 ];
 /* ===================== */
 
@@ -268,10 +305,10 @@ const $ = s => document.querySelector(s);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const io3 = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2;   // ease-in-out
 
-/* products */
-if (PRODUCTS.length) $('#grid').innerHTML = PRODUCTS.map(p => `<article class="card" data-r><span class="glare"></span>${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
-  <div class="ic" style="background:${p.color}"><img src="${p.icon}" alt="" width="38" height="38"></div><h3>${p.name}</h3><p class="tl">${p.tagline}</p>
-  <div class="ft"><span class="price">${p.price}</span><a class="btn btn-primary" href="${p.url}">Koupit <span class="ar">→</span></a></div></article>`).join('');
+/* products: once PRODUCTS has items, they replace the coming-soon card (image = a product screenshot) */
+if (PRODUCTS.length) $('#grid').innerHTML = `<div class="grid">${PRODUCTS.map(p => `<article class="card" data-r><div class="tx"><h3>${p.name}</h3><p>${p.tagline}</p></div>
+  <div class="ft"><span class="price">${p.price}</span><a class="btn btn-primary" href="${p.url}">Koupit <span class="ar">→</span></a></div>
+  <div class="panel">${p.image ? `<img src="${p.image}" alt="${p.name}">` : ''}</div></article>`).join('')}</div>`;
 document.querySelectorAll('[data-cfg]').forEach(a => { const v = CONFIG[a.dataset.cfg]; if (v) { a.href = v; a.target = "_blank"; a.rel = "noopener"; } });
 
 /* socials (fall in when the footer shows) */
@@ -305,13 +342,6 @@ document.querySelectorAll('[data-r]').forEach(el => {
   io.observe(el);
 });
 io.observe($('#foot'));
-
-/* product cards: smooth 3D tilt + glare */
-if (!reduce && matchMedia('(hover:hover)').matches) document.querySelectorAll('.card').forEach(c => {
-  c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-    c.style.transform = `rotateX(${(.5 - y) * 10}deg) rotateY(${(x - .5) * 12}deg) translateY(-4px)`; c.style.setProperty('--mx', x*100 + '%'); c.style.setProperty('--my', y*100 + '%'); });
-  c.addEventListener('mouseleave', () => c.style.transform = '');
-});
 
 /* hero: parallax stickers + the plane flying across the sky with a contrail */
 const hero = $('#hero'), fls = [...document.querySelectorAll('.fl')], plane = $('#plane'), route = $('#route'), trail = $('#trailp');
