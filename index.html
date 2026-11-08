@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SKAY — vlastní AI nástroje a produkty</title>
+<meta name="description" content="SKAY dělá vlastní AI nástroje a digitální produkty, které šetří čas. Každý týden ukazuju na Instagramu nejlepší AI nástroje a GitHub repa.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://skaysolutions.app/">
+<meta name="author" content="SKAY Solutions">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SKAY">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:url" content="https://skaysolutions.app/">
+<meta property="og:title" content="SKAY — vlastní AI nástroje a produkty">
+<meta property="og:description" content="Vlastní AI nástroje a produkty, které fakt šetří čas. A každý týden ty nejlepší AI nástroje z internetu.">
+<meta property="og:image" content="https://skaysolutions.app/assets/img/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SKAY Memoji v modré čepici a nápis: dělám AI nástroje s hlavou v oblacích">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SKAY — vlastní AI nástroje a produkty">
+<meta name="twitter:description" content="Vlastní AI nástroje a produkty, které fakt šetří čas.">
+<meta name="twitter:image" content="https://skaysolutions.app/assets/img/og.png">
+<meta name="theme-color" content="#F9FBFF">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","@id":"https://skaysolutions.app/#org","name":"SKAY Solutions","alternateName":"SKAY","url":"https://skaysolutions.app/","logo":{"@type":"ImageObject","url":"https://skaysolutions.app/assets/img/logo-512.png","width":512,"height":512},"image":"https://skaysolutions.app/assets/img/og.png","description":"Vlastní AI nástroje a digitální produkty."},
+ {"@type":"WebSite","@id":"https://skaysolutions.app/#web","url":"https://skaysolutions.app/","name":"SKAY","inLanguage":"cs-CZ","publisher":{"@id":"https://skaysolutions.app/#org"}},
+ {"@type":"WebPage","@id":"https://skaysolutions.app/#page","url":"https://skaysolutions.app/","name":"SKAY — vlastní AI nástroje a produkty","isPartOf":{"@id":"https://skaysolutions.app/#web"},"about":{"@id":"https://skaysolutions.app/#org"},"inLanguage":"cs-CZ","primaryImageOfPage":"https://skaysolutions.app/assets/img/og.png"}
+]}
+</script>
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1EFF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --cloud:#F9FBFF;--paper:#FFFFFF;--ink:#000;--muted:#6E6E73;--line:rgba(0,0,0,.08);
+  --sky:#2B73F3;--sky-action:#1F63E8;--sky-light:#5C9BFF;--sky-soft:#BFDAFF;
+  --night:#000;--night-raised:rgba(255,255,255,.09);--night-muted:#8E8E93;--live:#34C759;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
+  --rounded:ui-rounded,"SF Pro Rounded",-apple-system,"Inter",sans-serif;
+  --ease:cubic-bezier(.65,0,.35,1);
+  --shadow-primary:inset 0 0 0 1px rgba(255,255,255,.18),0 6px 16px rgba(31,99,232,.20);
+  --shadow-soft:0 6px 18px rgba(0,0,0,.06);
+  --shadow-float:0 24px 48px -16px rgba(10,40,110,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--cloud);color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:-.01em;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--sky-action);outline-offset:3px;border-radius:12px}
+
+/* ---------- Dynamic Island header ---------- */
+.top{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:10px}
+.top .me{width:34px;height:34px;border-radius:50%;background:var(--sky-soft);overflow:hidden;flex:none;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.top .me img{width:100%;height:100%;object-fit:contain;transform:translateY(8%) scale(1.05)}
+.island{position:relative;height:36px;border-radius:18px;background:var(--night);color:#fff;display:flex;align-items:center;gap:12px;padding:0 14px;overflow:hidden;cursor:pointer;
+  width:118px;transition:width .5s var(--ease),height .5s var(--ease),border-radius .5s var(--ease),padding .5s var(--ease)}
+.island .dot{position:relative;width:10px;height:10px;border-radius:50%;background:var(--live);flex:none}
+.island .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--live);opacity:.35;animation:ping 2.2s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.6);opacity:.45}70%,100%{transform:scale(1.8);opacity:0}}
+.island .bar{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.12);transition:opacity .25s var(--ease)}
+.island .msg{display:flex;align-items:center;gap:12px;opacity:0;white-space:nowrap;transition:opacity .3s var(--ease);position:absolute;left:12px;right:8px;top:0;bottom:0;pointer-events:none}
+.island .msg img{width:34px;height:34px;border-radius:50%;background:var(--sky-soft);object-fit:contain;padding-top:3px}
+.island .msg b{display:block;font-size:14px;font-weight:600;letter-spacing:-.14px}
+.island .msg span{display:block;font-size:12.5px;color:var(--night-muted)}
+.island .msg a{margin-left:auto;height:36px;line-height:36px;padding:0 16px;border-radius:18px;background:#fff;color:#000;font:700 14px var(--rounded);pointer-events:auto}
+.island.open{width:min(410px,calc(100vw - 72px));height:54px;border-radius:27px}
+.island.open .bar{opacity:0}.island.open .msg{opacity:1;transition-delay:.18s}
+
+/* ---------- layout ---------- */
+.wrap{width:min(1080px,100% - 48px);margin:0 auto}
+section{position:relative}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 0 80px}
+h1{font-size:clamp(38px,7.6vw,76px);line-height:1.02;font-weight:500;letter-spacing:-.035em}
+h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin:0 .01em;filter:drop-shadow(0 8px 12px rgba(10,40,110,.18));animation:bob 5s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.lead{margin-top:18px;max-width:470px;font-size:20px;line-height:1.45;letter-spacing:-.2px;color:var(--muted)}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:22px;font-size:15.5px;font-weight:500;letter-spacing:-.31px;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--sky-action);color:#fff;box-shadow:var(--shadow-primary)}
+.btn-paper{background:var(--paper);color:#363636;box-shadow:var(--shadow-soft)}
+.btn-glass{background:var(--night-raised);color:#fff;box-shadow:inset 0 6px 8px -6px rgba(255,255,255,.16),inset 0 -6px 8px -6px rgba(255,255,255,.08)}
+.float{position:absolute;pointer-events:none;filter:drop-shadow(var(--shadow-float));animation:drift 9s var(--ease) infinite}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(var(--r,0deg))}50%{transform:translate(0,-14px) rotate(calc(var(--r,0deg) + 4deg))}}
+
+/* ---------- marquee ---------- */
+.marq{overflow:hidden;padding:26px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq .lbl{text-align:center;font-size:13px;color:var(--muted);margin-bottom:18px}
+.track{display:flex;gap:46px;width:max-content;animation:marq 38s linear infinite}
+.track span{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:600;letter-spacing:-.4px;white-space:nowrap;color:#1d1d1f}
+.track img{width:30px;height:30px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- section heads ---------- */
+.sh{padding:110px 0 36px}
+.sh h2{font-size:clamp(34px,5vw,48px);line-height:1.05;font-weight:500;letter-spacing:-.03em}
+.sh h2 span{color:var(--muted)}
+.sh p{margin-top:12px;max-width:520px;font-size:18px;line-height:1.45;color:var(--muted)}
+
+/* ---------- products ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{position:relative;background:var(--paper);border-radius:24px;padding:22px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;gap:14px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(10,40,110,.25)}
+.card .ic{width:64px;height:64px;border-radius:22.5%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 10px 20px -10px rgba(10,40,110,.5)}
+.card .ic img{width:38px;height:38px}
+.card h3{font-size:22px;font-weight:600;letter-spacing:-.4px}
+.card .tl{font-size:15.5px;line-height:1.45;color:var(--muted)}
+.card .ft{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:6px}
+.card .price{font-size:20px;font-weight:600;letter-spacing:-.3px}
+.tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;letter-spacing:.02em;padding:5px 10px;border-radius:999px;background:rgba(43,115,243,.1);color:var(--sky-action)}
+.card.soon .ft .price{color:var(--muted);font-weight:500;font-size:16px}
+.card.soon h3::after{content:"";display:inline-block;width:64px;height:12px;margin-left:10px;border-radius:6px;background:linear-gradient(90deg,#eef2f8,#e2e9f4);vertical-align:2px}
+
+/* ---------- reels ---------- */
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.reel .chip{display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 16px 0 7px;border-radius:21px;background:var(--paper);box-shadow:var(--shadow-soft);font-weight:600;font-size:15.5px;letter-spacing:-.3px;margin-bottom:14px}
+.reel .chip img{width:28px;height:28px;border-radius:22.5%;padding:4px;background:#f3f5f9}
+.phone{position:relative;aspect-ratio:9/16;border-radius:34px;padding:8px;background:#0b0b0c;box-shadow:var(--shadow-float),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:27px;background:#111}
+.phone::before{content:"";position:absolute;top:16px;left:50%;width:30%;height:22px;margin-left:-15%;border-radius:11px;background:#000;z-index:2}
+.reel p{margin-top:14px;font-size:15.5px;line-height:1.45;color:var(--muted)}
+
+/* ---------- footer ---------- */
+footer{position:relative;margin-top:140px;background:var(--night);color:#fff;overflow:hidden;padding:40px 0 30px;min-height:640px}
+footer .me{width:72px;height:72px;border-radius:50%;background:var(--sky);overflow:hidden}
+footer .me img{width:100%;height:100%;object-fit:contain;transform:translateY(10%)}
+.socials{position:absolute;right:max(24px,calc(50% - 540px));top:34px;width:150px;height:130px}
+.socials a{position:absolute;width:60px;height:60px;border-radius:22.5%;border:2.5px solid #fff;background:#000;display:flex;align-items:center;justify-content:center;transition:transform .5s var(--ease)}
+.socials a img{width:30px;height:30px;filter:invert(1)}
+.socials a:hover{transform:rotate(0deg) scale(1.08)!important}
+footer h2{margin-top:150px;font-size:clamp(32px,4.4vw,44px);line-height:1.1;font-weight:500;letter-spacing:-.03em}
+footer .row{justify-content:flex-start;margin-top:22px}
+.giant{position:absolute;left:50%;bottom:-6vw;transform:translateX(-50%);width:min(1400px,120vw);opacity:.07;filter:invert(1);pointer-events:none}
+.copy{position:relative;margin-top:200px;text-align:center;font-size:12.5px;color:var(--night-muted)}
+
+/* ---------- reveal ---------- */
+[data-r]{opacity:0;filter:blur(8px);transform:translateY(14px);transition:opacity .8s var(--ease),filter .8s var(--ease),transform .8s var(--ease)}
+[data-r].in{opacity:1;filter:none;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-r]{opacity:1;filter:none;transform:none}}
+@media (max-width:820px){.reels{grid-template-columns:1fr;max-width:340px;margin:0 auto}.socials{transform:scale(.8);transform-origin:100% 0}.float.hide-m{display:none}}
+</style>
+</head>
+<body>
+
+<!-- Dynamic Island -->
+<header class="top">
+  <a class="me" href="#" aria-label="Nahoru"><img src="/assets/img/memoji.webp" alt="SKAY Memoji" width="402" height="524"></a>
+  <div class="island" id="island" role="button" tabindex="0" aria-expanded="false" aria-label="Novinky">
+    <span class="dot"></span><span class="bar"></span>
+    <div class="msg"><img src="/assets/img/memoji.webp" alt=""><div><b>první produkty už brzy</b><span>sleduj IG, ať ti nic neuteče.</span></div><a data-cfg="instagram" href="#">Sledovat</a></div>
+  </div>
+</header>
+
+<main>
+<!-- Hero -->
+<section class="hero wrap">
+  <img class="float" src="/assets/img/2601-fe0f.png" alt="" style="width:120px;left:2%;top:22%;--r:-8deg">
+  <img class="float hide-m" src="/assets/img/1f680.png" alt="" style="width:84px;right:4%;top:28%;--r:12deg;animation-delay:-3s">
+  <img class="float hide-m" src="/assets/img/26a1.png" alt="" style="width:64px;right:16%;bottom:16%;--r:-10deg;animation-delay:-5s">
+  <h1 data-r>dělám AI nástroje<br>s hlavou v <span style="white-space:nowrap">obl<img class="cl" src="/assets/img/2601-fe0f.png" alt="a" width="160" height="160">cích</span></h1>
+  <p class="lead" data-r>vlastní AI produkty, které ti šetří čas. a každý týden ukazuju ty nejlepší nástroje z internetu.</p>
+  <div class="row" data-r><a class="btn btn-primary" href="#produkty">Produkty</a><a class="btn btn-paper" href="#reels">Co ukazuju</a></div>
+</section>
+
+<!-- Tools marquee -->
+<div class="marq" data-r>
+  <div class="lbl">nástroje, o kterých mluvím</div>
+  <div class="track" id="track"><span><img src="/assets/icons/claude.svg" alt="" width="30" height="30" loading="lazy">Claude</span><span><img src="/assets/icons/openai.svg" alt="" width="30" height="30" loading="lazy">OpenAI</span><span><img src="/assets/icons/codex.svg" alt="" width="30" height="30" loading="lazy">Codex</span><span><img src="/assets/icons/cursor.svg" alt="" width="30" height="30" loading="lazy">Cursor</span><span><img src="/assets/icons/github.svg" alt="" width="30" height="30" loading="lazy">GitHub</span><span><img src="/assets/icons/elevenlabs.svg" alt="" width="30" height="30" loading="lazy">ElevenLabs</span><span><img src="/assets/icons/figma.svg" alt="" width="30" height="30" loading="lazy">Figma</span><span><img src="/assets/icons/notion.svg" alt="" width="30" height="30" loading="lazy">Notion</span><span><img src="/assets/icons/supabase.svg" alt="" width="30" height="30" loading="lazy">Supabase</span><span><img src="/assets/icons/vercel.svg" alt="" width="30" height="30" loading="lazy">Vercel</span><span><img src="/assets/icons/stripe.svg" alt="" width="30" height="30" loading="lazy">Stripe</span></div>
+</div>
+
+<!-- Products -->
+<section id="produkty" class="wrap">
+  <div class="sh" data-r><h2>produkty <span>od SKAY</span></h2><p>vlastní AI nástroje a balíčky. první drop právě chystám, sleduj IG.</p></div>
+  <div class="grid" id="grid"><article class="card soon" data-r><span class="tag">brzy</span><div class="ic" style="background:#2B73F3"><img src="/assets/img/1f680.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #1</h3><p class="tl">první AI nástroj od SKAY. co to bude, ukážu nejdřív na IG.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="tag">brzy</span><div class="ic" style="background:#5C9BFF"><img src="/assets/img/26a1.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #2</h3><p class="tl">balíček, se kterým si AI workflow nastavíš za odpoledne.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="tag">brzy</span><div class="ic" style="background:#BFDAFF"><img src="/assets/img/2601-fe0f.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #3</h3><p class="tl">pro ty, co chtějí víc. zatím tajné.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article></div>
+</section>
+
+<!-- Reels -->
+<section id="reels" class="wrap">
+  <div class="sh" data-r><h2>co ukazuju <span>na IG</span></h2><p>každý týden jeden nástroj nebo repo, které fakt pomůže. napíšeš slovo do komentářů a pošlu ti odkaz.</p></div>
+  <div class="reels" id="reelgrid"><article class="reel" data-r><span class="chip"><img src="/assets/icons/claude.svg" alt="" width="28" height="28" loading="lazy">Superpowers</span><div class="phone"><video muted loop playsinline preload="none" poster="/assets/reels/superpowers.jpg" aria-label="Ukázka reelu Superpowers"><source src="/assets/reels/superpowers.mp4" type="video/mp4"></video></div><p>Superpowers: doplněk, který z Claude Code udělá pečlivého inženýra.</p></article><article class="reel" data-r><span class="chip"><img src="/assets/icons/github.svg" alt="" width="28" height="28" loading="lazy">Taste Skill</span><div class="phone"><video muted loop playsinline preload="none" poster="/assets/reels/tasteskill.jpg" aria-label="Ukázka reelu Taste Skill"><source src="/assets/reels/tasteskill.mp4" type="video/mp4"></video></div><p>Taste Skill: skill, který AI zakáže dělat weby, co vypadají jako od AI.</p></article><article class="reel" data-r><span class="chip"><img src="/assets/icons/github.svg" alt="" width="28" height="28" loading="lazy">Kitchen</span><div class="phone"><video muted loop playsinline preload="none" poster="/assets/reels/kitchen.jpg" aria-label="Ukázka reelu Kitchen"><source src="/assets/reels/kitchen.mp4" type="video/mp4"></video></div><p>Kitchen: knihovna UI komponent, které vypadají jako od Applu.</p></article></div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="me"><img src="/assets/img/memoji.webp" alt="SKAY Memoji" width="402" height="524"></div>
+    <h2 data-r>chceš být u prvního dropu?<br>napiš mi na IG.</h2>
+    <div class="row" data-r><a class="btn btn-glass" data-cfg="instagram" href="#">Napsat na Instagram</a></div>
+    <div class="copy">© 2026 SKAY Solutions</div>
+  </div>
+  <nav class="socials" aria-label="Sítě" id="socials"></nav>
+  <img class="giant" src="/assets/img/skay-wordmark.svg" alt="" loading="lazy">
+</footer>
+
+<script>
+/* ===== edit here ===== */
+const CONFIG = {
+  instagram: "https://www.instagram.com/",   // TODO: tvůj IG profil
+  tiktok: "",                                 // volitelné
+  youtube: "",                                // volitelné
+  email: ""                                   // volitelné, např. ahoj@skaysolutions.app
+};
+/* Products. Add an object to sell something; `url` = Stripe payment link.
+   While the list is empty, the page shows "coming soon" cards. */
+const PRODUCTS = [
+  // { name:"Název", tagline:"Co to dělá jednou větou.", price:"490 Kč", icon:"/assets/img/26a1.png", color:"#2B73F3", url:"https://buy.stripe.com/...", tag:"Nové" },
+];
+const _REELS_UNUSED = [
+  { name:"Superpowers", icon:"/assets/icons/claude.svg", video:"/assets/reels/superpowers", text:"Doplněk, který z Claude Code udělá pečlivého inženýra." },
+  { name:"Taste Skill", icon:"/assets/icons/github.svg", video:"/assets/reels/tasteskill", text:"Skill, který AI zakáže dělat weby, co vypadají jako od AI." },
+  { name:"Kitchen", icon:"/assets/icons/github.svg", video:"/assets/reels/kitchen", text:"Knihovna UI komponent, které vypadají jako od Applu." }
+];
+const _TOOLS_UNUSED = [["claude","Claude"],["openai","OpenAI"],["codex","Codex"],["cursor","Cursor"],["github","GitHub"],["elevenlabs","ElevenLabs"],["figma","Figma"],["notion","Notion"],["supabase","Supabase"],["vercel","Vercel"],["stripe","Stripe"]];
+/* ===================== */
+
+const $ = s => document.querySelector(s);
+document.querySelectorAll('[data-cfg]').forEach(a => { const v = CONFIG[a.dataset.cfg]; if (v) { a.href = v; a.target = "_blank"; a.rel = "noopener"; } });
+
+/* island */
+const isl = $('#island');
+const setOpen = o => { isl.classList.toggle('open', o); isl.setAttribute('aria-expanded', o); };
+isl.addEventListener('mouseenter', () => setOpen(true));
+isl.addEventListener('mouseleave', () => setOpen(false));
+isl.addEventListener('click', e => { if (!e.target.closest('a')) setOpen(!isl.classList.contains('open')); });
+isl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!isl.classList.contains('open')); } });
+setTimeout(() => { setOpen(true); setTimeout(() => { if (!isl.matches(':hover')) setOpen(false); }, 3200); }, 1400);
+
+/* marquee: duplicate the static row for a seamless loop */
+const tr = $('#track'); tr.innerHTML += tr.innerHTML.replace(/<span>/g, '<span aria-hidden="true">');
+
+/* products: replace the coming-soon cards once PRODUCTS has items */
+if (PRODUCTS.length) $('#grid').innerHTML = PRODUCTS.map(p => `<article class="card" data-r>${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
+  <div class="ic" style="background:${p.color}"><img src="${p.icon}" alt="" width="38" height="38"></div><h3>${p.name}</h3><p class="tl">${p.tagline}</p>
+  <div class="ft"><span class="price">${p.price}</span><a class="btn btn-primary" href="${p.url}">Koupit</a></div></article>`).join('');
+document.querySelectorAll('[data-cfg]').forEach(a => { const v = CONFIG[a.dataset.cfg]; if (v) { a.href = v; a.target = "_blank"; a.rel = "noopener"; } });
+
+/* socials */
+const soc = [["instagram", CONFIG.instagram, -12, 0, 0], ["tiktok", CONFIG.tiktok, 9, 58, 16], ["youtube", CONFIG.youtube, -4, 30, 64]].filter(s => s[1]);
+$('#socials').innerHTML = soc.map(([n, u, r, x, y]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}" style="left:${x}px;top:${y}px;transform:rotate(${r}deg)"><img src="/assets/icons/${n}.svg" alt=""></a>`).join('');
+
+/* reveal + autoplay */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); e.target.querySelector?.('video')?.play().catch(() => {}); }
+  else e.target.querySelector?.('video')?.pause();
+}), { threshold: .18 });
+document.querySelectorAll('[data-r]').forEach((el, i) => { el.style.transitionDelay = (el.closest('.hero') ? i * .08 : 0) + 's'; io.observe(el); });
+</script>
+</body>
+</html>
