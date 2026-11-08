@@ -1,0 +1,6 @@
+# SKAY
+
+> SKAY (SKAY Solutions) dělá vlastní AI nástroje a digitální produkty. Na Instagramu @222skay každý týden ukazuje AI nástroje, Claude Code skilly a GitHub repa, které šetří čas.
+
+- [Web](https://skaysolutions.app/): produkty, ukázky reelů a časté otázky
+- [Instagram @222skay](https://www.instagram.com/222skay/): reels s AI nástroji; napiš klíčové slovo do komentářů a přijde odkaz
