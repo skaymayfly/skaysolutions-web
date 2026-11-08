@@ -44,7 +44,8 @@
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
   --rounded:ui-rounded,"SF Pro Rounded",-apple-system,"Inter",sans-serif;
   --ease:cubic-bezier(.65,0,.35,1);
-  --shadow-primary:inset 0 0 0 1px rgba(255,255,255,.18),0 6px 16px rgba(31,99,232,.20);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --shadow-primary:inset 0 0 0 1px rgba(255,255,255,.18),0 6px 16px rgba(31,99,232,.22);
   --shadow-soft:0 6px 18px rgba(0,0,0,.06);
   --shadow-float:0 24px 48px -16px rgba(10,40,110,.28);
 }
@@ -55,118 +56,167 @@ a{color:inherit;text-decoration:none}
 img,video{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--sky-action);outline-offset:3px;border-radius:12px}
 
-/* ---------- Dynamic Island header ---------- */
-.top{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:10px}
-.top .me{width:34px;height:34px;border-radius:50%;background:var(--sky-soft);overflow:hidden;flex:none;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+/* ---------- Dynamic Island ---------- */
+.top{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;justify-content:center;height:54px}
+.top .me{position:absolute;right:calc(100% + 10px);top:10px;width:34px;height:34px;border-radius:50%;background:var(--sky-soft);overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.1);
+  transition:opacity .4s var(--ease),transform .5s var(--ease)}
 .top .me img{width:100%;height:100%;object-fit:contain;transform:translateY(8%) scale(1.05)}
+.top.open .me{opacity:0;transform:scale(.6)}
 .island{position:relative;height:36px;border-radius:18px;background:var(--night);color:#fff;display:flex;align-items:center;gap:12px;padding:0 14px;overflow:hidden;cursor:pointer;
-  width:118px;transition:width .5s var(--ease),height .5s var(--ease),border-radius .5s var(--ease),padding .5s var(--ease)}
-.island .dot{position:relative;width:10px;height:10px;border-radius:50%;background:var(--live);flex:none}
+  width:118px;box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  transition:width .6s var(--ease),height .6s var(--ease),border-radius .6s var(--ease)}
+.island .dot{position:relative;width:10px;height:10px;border-radius:50%;background:var(--live);flex:none;transition:opacity .25s var(--ease)}
 .island .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--live);opacity:.35;animation:ping 2.2s var(--ease) infinite}
 @keyframes ping{0%{transform:scale(.6);opacity:.45}70%,100%{transform:scale(1.8);opacity:0}}
 .island .bar{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.12);transition:opacity .25s var(--ease)}
-.island .msg{display:flex;align-items:center;gap:12px;opacity:0;white-space:nowrap;transition:opacity .3s var(--ease);position:absolute;left:12px;right:8px;top:0;bottom:0;pointer-events:none}
-.island .msg img{width:34px;height:34px;border-radius:50%;background:var(--sky-soft);object-fit:contain;padding-top:3px}
-.island .msg b{display:block;font-size:14px;font-weight:600;letter-spacing:-.14px}
-.island .msg span{display:block;font-size:12.5px;color:var(--night-muted)}
-.island .msg a{margin-left:auto;height:36px;line-height:36px;padding:0 16px;border-radius:18px;background:#fff;color:#000;font:700 14px var(--rounded);pointer-events:auto}
-.island.open{width:min(410px,calc(100vw - 72px));height:54px;border-radius:27px}
-.island.open .bar{opacity:0}.island.open .msg{opacity:1;transition-delay:.18s}
+.island .msg{position:absolute;inset:0 8px 0 9px;display:flex;align-items:center;gap:12px;opacity:0;transform:scale(.96);white-space:nowrap;pointer-events:none;
+  transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.island .msg img{width:36px;height:36px;border-radius:50%;background:var(--sky-soft);object-fit:contain;padding-top:4px;flex:none}
+.island .msg .t{min-width:0;overflow:hidden}
+.island .msg b{display:block;font-size:14px;line-height:18px;font-weight:600;letter-spacing:-.14px}
+.island .msg span{display:block;font-size:12.5px;line-height:16px;color:var(--night-muted);overflow:hidden;text-overflow:ellipsis}
+.island .msg a{margin-left:auto;flex:none;display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:18px;background:#fff;color:#000;font-family:var(--rounded);font-weight:700;font-size:14px;line-height:1;pointer-events:auto;transition:transform .35s var(--ease)}
+.island .msg a:hover{transform:scale(1.05)}
+.top.open .island{width:min(400px,calc(100vw - 32px));height:54px;border-radius:27px}
+.top.open .dot,.top.open .bar{opacity:0}
+.top.open .msg{opacity:1;transform:none;transition-delay:.2s}
 
 /* ---------- layout ---------- */
 .wrap{width:min(1080px,100% - 48px);margin:0 auto}
 section{position:relative}
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 0 80px}
-h1{font-size:clamp(38px,7.6vw,76px);line-height:1.02;font-weight:500;letter-spacing:-.035em}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:150px 0 110px;overflow:visible}
+.sky-bg{position:absolute;top:0;left:50%;width:100vw;transform:translateX(-50%);height:120svh;z-index:-1;pointer-events:none;
+  background:radial-gradient(70% 55% at 50% 0%,rgba(191,218,255,.55),rgba(191,218,255,0) 70%),radial-gradient(40% 35% at 85% 30%,rgba(92,155,255,.14),transparent 70%)}
+h1{font-size:clamp(40px,7.6vw,78px);line-height:1.03;font-weight:500;letter-spacing:-.035em}
+h1 .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(24px);transition:opacity .9s var(--ease),filter .9s var(--ease),transform .9s var(--ease)}
+.ready h1 .w{opacity:1;filter:none;transform:none}
 h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin:0 .01em;filter:drop-shadow(0 8px 12px rgba(10,40,110,.18));animation:bob 5s var(--ease) infinite}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
-.lead{margin-top:18px;max-width:470px;font-size:20px;line-height:1.45;letter-spacing:-.2px;color:var(--muted)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(4deg)}}
+.lead{margin-top:18px;max-width:480px;font-size:20px;line-height:1.45;letter-spacing:-.2px;color:var(--muted)}
 .row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:22px;font-size:15.5px;font-weight:500;letter-spacing:-.31px;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.btn{position:relative;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:22px;font-size:15.5px;font-weight:500;letter-spacing:-.31px;overflow:hidden;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .btn:hover{transform:translateY(-2px)}
 .btn-primary{background:var(--sky-action);color:#fff;box-shadow:var(--shadow-primary)}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:shine 4.5s var(--ease) infinite 2s}
+@keyframes shine{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
 .btn-paper{background:var(--paper);color:#363636;box-shadow:var(--shadow-soft)}
 .btn-glass{background:var(--night-raised);color:#fff;box-shadow:inset 0 6px 8px -6px rgba(255,255,255,.16),inset 0 -6px 8px -6px rgba(255,255,255,.08)}
-.float{position:absolute;pointer-events:none;filter:drop-shadow(var(--shadow-float));animation:drift 9s var(--ease) infinite}
-@keyframes drift{0%,100%{transform:translate(0,0) rotate(var(--r,0deg))}50%{transform:translate(0,-14px) rotate(calc(var(--r,0deg) + 4deg))}}
+.btn .ar{transition:transform .5s var(--ease)}.btn:hover .ar{transform:translateX(3px)}
+
+/* floating stickers (position set by JS parallax) */
+.fl{position:absolute;pointer-events:none;will-change:transform;filter:drop-shadow(var(--shadow-float));opacity:0;transition:opacity 1.2s var(--ease)}
+.ready .fl{opacity:1}
+.fl img{width:100%;animation:drift var(--d,8s) var(--ease) infinite;animation-delay:var(--dl,0s)}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-16px) rotate(calc(var(--r,0deg) + 5deg))}}
+/* plane + contrail */
+#flight{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:0}
+#flight path{fill:none}#route{stroke:none}#trailp{stroke:url(#trail);stroke-width:3;stroke-linecap:round}
+#plane{position:absolute;left:0;top:0;width:84px;height:84px;margin:-42px 0 0 -42px;pointer-events:none;will-change:transform;filter:drop-shadow(0 18px 22px rgba(10,40,110,.25));z-index:1}
+.hero>h1,.hero>.lead,.hero>.row{position:relative;z-index:2}
 
 /* ---------- marquee ---------- */
 .marq{overflow:hidden;padding:26px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .marq .lbl{text-align:center;font-size:13px;color:var(--muted);margin-bottom:18px}
-.track{display:flex;gap:46px;width:max-content;animation:marq 38s linear infinite}
-.track span{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:600;letter-spacing:-.4px;white-space:nowrap;color:#1d1d1f}
+.track{display:flex;gap:46px;width:max-content;animation:marq 40s linear infinite}
+.marq:hover .track{animation-play-state:paused}
+.track span{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:600;letter-spacing:-.4px;white-space:nowrap;color:#1d1d1f;transition:transform .4s var(--ease)}
+.track span:hover{transform:translateY(-3px)}
 .track img{width:30px;height:30px}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* ---------- section heads ---------- */
-.sh{padding:110px 0 36px}
-.sh h2{font-size:clamp(34px,5vw,48px);line-height:1.05;font-weight:500;letter-spacing:-.03em}
+.sh{padding:120px 0 36px}
+.sh h2{font-size:clamp(34px,5vw,50px);line-height:1.05;font-weight:500;letter-spacing:-.03em}
 .sh h2 span{color:var(--muted)}
 .sh p{margin-top:12px;max-width:520px;font-size:18px;line-height:1.45;color:var(--muted)}
 
 /* ---------- products ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.card{position:relative;background:var(--paper);border-radius:24px;padding:22px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;gap:14px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(10,40,110,.25)}
-.card .ic{width:64px;height:64px;border-radius:22.5%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 10px 20px -10px rgba(10,40,110,.5)}
-.card .ic img{width:38px;height:38px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;perspective:1200px}
+.card{position:relative;background:var(--paper);border-radius:26px;padding:22px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;gap:14px;
+  transform-style:preserve-3d;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.card:hover{box-shadow:0 26px 50px -22px rgba(10,40,110,.3)}
+.card .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .5s var(--ease);background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(191,218,255,.45),transparent 60%)}
+.card:hover .glare{opacity:1}
+.card .ic{width:64px;height:64px;border-radius:22.5%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 12px 22px -10px rgba(10,40,110,.55);transform:translateZ(30px)}
+.card .ic img{width:38px;height:38px;animation:drift 6s var(--ease) infinite}
+.card:nth-child(2) .ic img{animation-delay:-2s}.card:nth-child(3) .ic img{animation-delay:-4s}
 .card h3{font-size:22px;font-weight:600;letter-spacing:-.4px}
 .card .tl{font-size:15.5px;line-height:1.45;color:var(--muted)}
 .card .ft{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:6px}
 .card .price{font-size:20px;font-weight:600;letter-spacing:-.3px}
 .tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;letter-spacing:.02em;padding:5px 10px;border-radius:999px;background:rgba(43,115,243,.1);color:var(--sky-action)}
 .card.soon .ft .price{color:var(--muted);font-weight:500;font-size:16px}
-.card.soon h3::after{content:"";display:inline-block;width:64px;height:12px;margin-left:10px;border-radius:6px;background:linear-gradient(90deg,#eef2f8,#e2e9f4);vertical-align:2px}
+.card.soon h3::after{content:"";display:inline-block;width:64px;height:12px;margin-left:10px;border-radius:6px;vertical-align:2px;
+  background:linear-gradient(90deg,#eef2f8 0%,#dfe8f6 40%,#eef2f8 80%);background-size:200% 100%;animation:shimmer 2.4s linear infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
 
 /* ---------- reels ---------- */
-.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .reel .chip{display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 16px 0 7px;border-radius:21px;background:var(--paper);box-shadow:var(--shadow-soft);font-weight:600;font-size:15.5px;letter-spacing:-.3px;margin-bottom:14px}
 .reel .chip img{width:28px;height:28px;border-radius:22.5%;padding:4px;background:#f3f5f9}
-.phone{position:relative;aspect-ratio:9/16;border-radius:34px;padding:8px;background:#0b0b0c;box-shadow:var(--shadow-float),inset 0 0 0 1.5px rgba(255,255,255,.08)}
-.phone video{width:100%;height:100%;object-fit:cover;border-radius:27px;background:#111}
+.phone{position:relative;aspect-ratio:9/16;border-radius:36px;padding:8px;background:#0b0b0c;box-shadow:var(--shadow-float),inset 0 0 0 1.5px rgba(255,255,255,.08);
+  transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.reel:nth-child(1) .phone{--rot:-3deg}.reel:nth-child(2) .phone{--rot:0deg;--ty:-18px}.reel:nth-child(3) .phone{--rot:3deg}
+.reel .phone{transform:translateY(var(--ty,0)) rotate(var(--rot))}
+.reel:hover .phone{transform:translateY(calc(var(--ty,0px) - 10px)) rotate(0deg) scale(1.02);box-shadow:0 40px 70px -24px rgba(10,40,110,.4)}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:29px;background:#111}
 .phone::before{content:"";position:absolute;top:16px;left:50%;width:30%;height:22px;margin-left:-15%;border-radius:11px;background:#000;z-index:2}
-.reel p{margin-top:14px;font-size:15.5px;line-height:1.45;color:var(--muted)}
+.reel p{margin-top:16px;font-size:15.5px;line-height:1.45;color:var(--muted)}
 
 /* ---------- footer ---------- */
-footer{position:relative;margin-top:140px;background:var(--night);color:#fff;overflow:hidden;padding:40px 0 30px;min-height:640px}
-footer .me{width:72px;height:72px;border-radius:50%;background:var(--sky);overflow:hidden}
+footer{position:relative;margin-top:150px;background:var(--night);color:#fff;overflow:hidden;padding:40px 0 30px;min-height:660px}
+footer .me{width:76px;height:76px;border-radius:50%;background:var(--sky);overflow:hidden;transform-origin:50% 100%}
 footer .me img{width:100%;height:100%;object-fit:contain;transform:translateY(10%)}
-.socials{position:absolute;right:max(24px,calc(50% - 540px));top:34px;width:150px;height:130px}
-.socials a{position:absolute;width:60px;height:60px;border-radius:22.5%;border:2.5px solid #fff;background:#000;display:flex;align-items:center;justify-content:center;transition:transform .5s var(--ease)}
+footer.in .me{animation:hop 2.6s var(--ease) .3s 2}
+@keyframes hop{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-14px) rotate(-8deg)}50%{transform:translateY(0) rotate(0)}70%{transform:translateY(-6px) rotate(6deg)}}
+.mewrap{position:relative;width:76px}.wave{position:absolute;left:62px;top:-14px;width:40px;height:auto;opacity:0;transform-origin:70% 90%}
+footer.in .wave{animation:wave 2.6s var(--ease) .5s 2 both}
+@keyframes wave{0%{opacity:0;transform:rotate(0)}15%{opacity:1}30%{transform:rotate(18deg)}45%{transform:rotate(-10deg)}60%{transform:rotate(16deg)}80%{opacity:1;transform:rotate(0)}100%{opacity:0}}
+.socials{position:absolute;right:max(24px,calc(50% - 540px));top:34px;width:170px;height:150px}
+.socials a{position:absolute;width:64px;height:64px;border-radius:22.5%;border:2.5px solid #fff;background:#000;display:flex;align-items:center;justify-content:center;
+  transform:translateY(-220px) rotate(0deg);opacity:0;transition:transform 1s var(--ease),opacity .6s var(--ease)}
 .socials a img{width:30px;height:30px;filter:invert(1)}
-.socials a:hover{transform:rotate(0deg) scale(1.08)!important}
-footer h2{margin-top:150px;font-size:clamp(32px,4.4vw,44px);line-height:1.1;font-weight:500;letter-spacing:-.03em}
+footer.in .socials a{opacity:1;transform:translate(0,0) rotate(var(--r))}
+footer.in .socials a:hover{transform:rotate(0deg) scale(1.08)}
+footer h2{margin-top:150px;font-size:clamp(32px,4.4vw,46px);line-height:1.1;font-weight:500;letter-spacing:-.03em}
 footer .row{justify-content:flex-start;margin-top:22px}
-.giant{position:absolute;left:50%;bottom:-6vw;transform:translateX(-50%);width:min(1400px,120vw);opacity:.07;filter:invert(1);pointer-events:none}
-.copy{position:relative;margin-top:200px;text-align:center;font-size:12.5px;color:var(--night-muted)}
+.giant{position:absolute;left:50%;bottom:-5vw;width:min(1400px,120vw);opacity:.07;filter:invert(1);pointer-events:none;transform:translate(-50%,var(--gy,30%));will-change:transform}
+.copy{position:relative;margin-top:210px;text-align:center;font-size:12.5px;color:var(--night-muted)}
 
 /* ---------- reveal ---------- */
-[data-r]{opacity:0;filter:blur(8px);transform:translateY(14px);transition:opacity .8s var(--ease),filter .8s var(--ease),transform .8s var(--ease)}
+[data-r]{opacity:0;filter:blur(8px);transform:translateY(18px);transition:opacity .9s var(--ease),filter .9s var(--ease),transform .9s var(--ease)}
 [data-r].in{opacity:1;filter:none;transform:none}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-r]{opacity:1;filter:none;transform:none}}
-@media (max-width:820px){.reels{grid-template-columns:1fr;max-width:340px;margin:0 auto}.socials{transform:scale(.8);transform-origin:100% 0}.float.hide-m{display:none}}
+.reel[data-r].in .phone{transform:translateY(var(--ty,0)) rotate(var(--rot))}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-r],h1 .w,.fl,.socials a{opacity:1!important;filter:none!important;transform:none!important}#plane,#flight{display:none}}
+@media (max-width:820px){.reels{grid-template-columns:1fr;max-width:330px;margin:0 auto;gap:40px}.reel .phone{--ty:0!important}.socials{transform:scale(.8);transform-origin:100% 0}.fl.hide-m{display:none}#plane{width:56px;height:56px;margin:-28px 0 0 -28px}.hero{padding:130px 0 60px;min-height:auto}.fl{transform-origin:center}.fl[data-depth="22"]{width:84px!important;top:16%!important}.fl[data-depth="34"]{width:58px!important;top:14%!important;right:2%!important}}
 </style>
 </head>
 <body>
 
 <!-- Dynamic Island -->
-<header class="top">
+<header class="top" id="top">
   <a class="me" href="#" aria-label="Nahoru"><img src="/assets/img/memoji.webp" alt="SKAY Memoji" width="402" height="524"></a>
   <div class="island" id="island" role="button" tabindex="0" aria-expanded="false" aria-label="Novinky">
     <span class="dot"></span><span class="bar"></span>
-    <div class="msg"><img src="/assets/img/memoji.webp" alt=""><div><b>první produkty už brzy</b><span>sleduj IG, ať ti nic neuteče.</span></div><a data-cfg="instagram" href="#">Sledovat</a></div>
+    <div class="msg"><img src="/assets/img/memoji.webp" alt=""><div class="t"><b>první produkty už brzy</b><span>sleduj IG, ať ti nic neuteče.</span></div><a data-cfg="instagram" href="https://www.instagram.com/">Sledovat</a></div>
   </div>
 </header>
 
 <main>
 <!-- Hero -->
-<section class="hero wrap">
-  <img class="float" src="/assets/img/2601-fe0f.png" alt="" style="width:120px;left:2%;top:22%;--r:-8deg">
-  <img class="float hide-m" src="/assets/img/1f680.png" alt="" style="width:84px;right:4%;top:28%;--r:12deg;animation-delay:-3s">
-  <img class="float hide-m" src="/assets/img/26a1.png" alt="" style="width:64px;right:16%;bottom:16%;--r:-10deg;animation-delay:-5s">
-  <h1 data-r>dělám AI nástroje<br>s hlavou v <span style="white-space:nowrap">obl<img class="cl" src="/assets/img/2601-fe0f.png" alt="a" width="160" height="160">cích</span></h1>
+<section class="hero wrap" id="hero">
+  <div class="sky-bg"></div>
+  <svg id="flight" aria-hidden="true"><defs><linearGradient id="trail" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5C9BFF" stop-opacity="0"/><stop offset="1" stop-color="#5C9BFF" stop-opacity=".55"/></linearGradient></defs><path id="route"/><path id="trailp"/></svg>
+  <img id="plane" src="/assets/img/2708-fe0f.png" alt="" width="160" height="160">
+  <div class="fl" data-depth="22" style="width:130px;left:1%;top:20%;--r:-6deg;--d:9s"><img src="/assets/img/2601-fe0f.png" alt=""></div>
+  <div class="fl hide-m" data-depth="12" style="width:92px;left:14%;bottom:14%;--r:8deg;--d:10s;--dl:-4s"><img src="/assets/img/2601-fe0f.png" alt=""></div>
+  <div class="fl" data-depth="34" style="width:82px;right:5%;top:24%;--r:14deg;--d:7s;--dl:-2s"><img src="/assets/img/1f680.png" alt=""></div>
+  <div class="fl hide-m" data-depth="18" style="width:62px;right:15%;bottom:18%;--r:-12deg;--d:8s;--dl:-5s"><img src="/assets/img/26a1.png" alt=""></div>
+  <div class="fl hide-m" data-depth="28" style="width:48px;left:22%;top:16%;--r:0deg;--d:6s;--dl:-1s"><img src="/assets/img/2728.png" alt=""></div>
+  <h1><span class="w">dělám</span> <span class="w">AI</span> <span class="w">nástroje</span><br><span class="w">s</span> <span class="w">hlavou</span> <span class="w">v</span> <span class="w" style="white-space:nowrap">obl<img class="cl" src="/assets/img/2601-fe0f.png" alt="a" width="160" height="160">cích</span></h1>
   <p class="lead" data-r>vlastní AI produkty, které ti šetří čas. a každý týden ukazuju ty nejlepší nástroje z internetu.</p>
-  <div class="row" data-r><a class="btn btn-primary" href="#produkty">Produkty</a><a class="btn btn-paper" href="#reels">Co ukazuju</a></div>
+  <div class="row" data-r><a class="btn btn-primary" href="#produkty">Produkty <span class="ar">→</span></a><a class="btn btn-paper" href="#reels">Co ukazuju</a></div>
 </section>
 
 <!-- Tools marquee -->
@@ -178,7 +228,7 @@ footer .row{justify-content:flex-start;margin-top:22px}
 <!-- Products -->
 <section id="produkty" class="wrap">
   <div class="sh" data-r><h2>produkty <span>od SKAY</span></h2><p>vlastní AI nástroje a balíčky. první drop právě chystám, sleduj IG.</p></div>
-  <div class="grid" id="grid"><article class="card soon" data-r><span class="tag">brzy</span><div class="ic" style="background:#2B73F3"><img src="/assets/img/1f680.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #1</h3><p class="tl">první AI nástroj od SKAY. co to bude, ukážu nejdřív na IG.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="tag">brzy</span><div class="ic" style="background:#5C9BFF"><img src="/assets/img/26a1.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #2</h3><p class="tl">balíček, se kterým si AI workflow nastavíš za odpoledne.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="tag">brzy</span><div class="ic" style="background:#BFDAFF"><img src="/assets/img/2601-fe0f.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #3</h3><p class="tl">pro ty, co chtějí víc. zatím tajné.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article></div>
+  <div class="grid" id="grid"><article class="card soon" data-r><span class="glare"></span><span class="tag">brzy</span><div class="ic" style="background:#2B73F3"><img src="/assets/img/1f680.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #1</h3><p class="tl">první AI nástroj od SKAY. co to bude, ukážu nejdřív na IG.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="glare"></span><span class="tag">brzy</span><div class="ic" style="background:#5C9BFF"><img src="/assets/img/26a1.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #2</h3><p class="tl">balíček, se kterým si AI workflow nastavíš za odpoledne.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article><article class="card soon" data-r><span class="glare"></span><span class="tag">brzy</span><div class="ic" style="background:#BFDAFF"><img src="/assets/img/2601-fe0f.png" alt="" width="38" height="38" loading="lazy"></div><h3>Drop #3</h3><p class="tl">pro ty, co chtějí víc. zatím tajné.</p><div class="ft"><span class="price">cena brzy</span><a class="btn btn-paper" data-cfg="instagram" href="https://www.instagram.com/">Dát vědět</a></div></article></div>
 </section>
 
 <!-- Reels -->
@@ -189,15 +239,15 @@ footer .row{justify-content:flex-start;margin-top:22px}
 </main>
 
 <!-- Footer -->
-<footer>
+<footer id="foot">
   <div class="wrap">
-    <div class="me"><img src="/assets/img/memoji.webp" alt="SKAY Memoji" width="402" height="524"></div>
+    <div class="mewrap"><div class="me"><img src="/assets/img/memoji.webp" alt="SKAY Memoji" width="402" height="524"></div><img class="wave" src="/assets/img/1f44b.png" alt="" width="160" height="160"></div>
     <h2 data-r>chceš být u prvního dropu?<br>napiš mi na IG.</h2>
-    <div class="row" data-r><a class="btn btn-glass" data-cfg="instagram" href="#">Napsat na Instagram</a></div>
+    <div class="row" data-r><a class="btn btn-glass" data-cfg="instagram" href="https://www.instagram.com/">Napsat na Instagram <span class="ar">→</span></a></div>
     <div class="copy">© 2026 SKAY Solutions</div>
   </div>
   <nav class="socials" aria-label="Sítě" id="socials"></nav>
-  <img class="giant" src="/assets/img/skay-wordmark.svg" alt="" loading="lazy">
+  <img class="giant" id="giant" src="/assets/img/skay-wordmark.svg" alt="" loading="lazy">
 </footer>
 
 <script>
@@ -205,53 +255,98 @@ footer .row{justify-content:flex-start;margin-top:22px}
 const CONFIG = {
   instagram: "https://www.instagram.com/",   // TODO: tvůj IG profil
   tiktok: "",                                 // volitelné
-  youtube: "",                                // volitelné
-  email: ""                                   // volitelné, např. ahoj@skaysolutions.app
+  youtube: ""                                 // volitelné
 };
 /* Products. Add an object to sell something; `url` = Stripe payment link.
-   While the list is empty, the page shows "coming soon" cards. */
+   While the list is empty, the page shows the "coming soon" cards. */
 const PRODUCTS = [
   // { name:"Název", tagline:"Co to dělá jednou větou.", price:"490 Kč", icon:"/assets/img/26a1.png", color:"#2B73F3", url:"https://buy.stripe.com/...", tag:"Nové" },
 ];
-const _REELS_UNUSED = [
-  { name:"Superpowers", icon:"/assets/icons/claude.svg", video:"/assets/reels/superpowers", text:"Doplněk, který z Claude Code udělá pečlivého inženýra." },
-  { name:"Taste Skill", icon:"/assets/icons/github.svg", video:"/assets/reels/tasteskill", text:"Skill, který AI zakáže dělat weby, co vypadají jako od AI." },
-  { name:"Kitchen", icon:"/assets/icons/github.svg", video:"/assets/reels/kitchen", text:"Knihovna UI komponent, které vypadají jako od Applu." }
-];
-const _TOOLS_UNUSED = [["claude","Claude"],["openai","OpenAI"],["codex","Codex"],["cursor","Cursor"],["github","GitHub"],["elevenlabs","ElevenLabs"],["figma","Figma"],["notion","Notion"],["supabase","Supabase"],["vercel","Vercel"],["stripe","Stripe"]];
 /* ===================== */
 
 const $ = s => document.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io3 = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2;   // ease-in-out
+
+/* products */
+if (PRODUCTS.length) $('#grid').innerHTML = PRODUCTS.map(p => `<article class="card" data-r><span class="glare"></span>${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
+  <div class="ic" style="background:${p.color}"><img src="${p.icon}" alt="" width="38" height="38"></div><h3>${p.name}</h3><p class="tl">${p.tagline}</p>
+  <div class="ft"><span class="price">${p.price}</span><a class="btn btn-primary" href="${p.url}">Koupit <span class="ar">→</span></a></div></article>`).join('');
 document.querySelectorAll('[data-cfg]').forEach(a => { const v = CONFIG[a.dataset.cfg]; if (v) { a.href = v; a.target = "_blank"; a.rel = "noopener"; } });
 
-/* island */
-const isl = $('#island');
-const setOpen = o => { isl.classList.toggle('open', o); isl.setAttribute('aria-expanded', o); };
+/* socials (fall in when the footer shows) */
+const soc = [["instagram", CONFIG.instagram, -12, 0, 0], ["tiktok", CONFIG.tiktok, 9, 64, 18], ["youtube", CONFIG.youtube, -5, 32, 72]].filter(s => s[1]);
+$('#socials').innerHTML = soc.map(([n, u, r, x, y], i) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}" style="left:${x}px;top:${y}px;--r:${r}deg;transition-delay:${.15 + i*.12}s"><img src="/assets/icons/${n}.svg" alt=""></a>`).join('');
+
+/* island: hide the side avatar while open; auto-peek once on load */
+const topEl = $('#top'), isl = $('#island');
+const setOpen = o => { topEl.classList.toggle('open', o); isl.setAttribute('aria-expanded', o); };
 isl.addEventListener('mouseenter', () => setOpen(true));
 isl.addEventListener('mouseleave', () => setOpen(false));
-isl.addEventListener('click', e => { if (!e.target.closest('a')) setOpen(!isl.classList.contains('open')); });
-isl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!isl.classList.contains('open')); } });
-setTimeout(() => { setOpen(true); setTimeout(() => { if (!isl.matches(':hover')) setOpen(false); }, 3200); }, 1400);
+isl.addEventListener('click', e => { if (!e.target.closest('a')) setOpen(!topEl.classList.contains('open')); });
+isl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!topEl.classList.contains('open')); } });
+setTimeout(() => { if (scrollY < 40) { setOpen(true); setTimeout(() => { if (!isl.matches(':hover')) setOpen(false); }, 3000); } }, 1600);
 
-/* marquee: duplicate the static row for a seamless loop */
+/* hero headline: word by word */
+document.querySelectorAll('h1 .w').forEach((w, i) => w.style.transitionDelay = (.15 + i * .09) + 's');
+requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
+
+/* marquee: duplicate for a seamless loop */
 const tr = $('#track'); tr.innerHTML += tr.innerHTML.replace(/<span>/g, '<span aria-hidden="true">');
 
-/* products: replace the coming-soon cards once PRODUCTS has items */
-if (PRODUCTS.length) $('#grid').innerHTML = PRODUCTS.map(p => `<article class="card" data-r>${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
-  <div class="ic" style="background:${p.color}"><img src="${p.icon}" alt="" width="38" height="38"></div><h3>${p.name}</h3><p class="tl">${p.tagline}</p>
-  <div class="ft"><span class="price">${p.price}</span><a class="btn btn-primary" href="${p.url}">Koupit</a></div></article>`).join('');
-document.querySelectorAll('[data-cfg]').forEach(a => { const v = CONFIG[a.dataset.cfg]; if (v) { a.href = v; a.target = "_blank"; a.rel = "noopener"; } });
-
-/* socials */
-const soc = [["instagram", CONFIG.instagram, -12, 0, 0], ["tiktok", CONFIG.tiktok, 9, 58, 16], ["youtube", CONFIG.youtube, -4, 30, 64]].filter(s => s[1]);
-$('#socials').innerHTML = soc.map(([n, u, r, x, y]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}" style="left:${x}px;top:${y}px;transform:rotate(${r}deg)"><img src="/assets/icons/${n}.svg" alt=""></a>`).join('');
-
-/* reveal + autoplay */
+/* reveal + video autoplay */
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); e.target.querySelector?.('video')?.play().catch(() => {}); }
   else e.target.querySelector?.('video')?.pause();
 }), { threshold: .18 });
-document.querySelectorAll('[data-r]').forEach((el, i) => { el.style.transitionDelay = (el.closest('.hero') ? i * .08 : 0) + 's'; io.observe(el); });
+document.querySelectorAll('[data-r]').forEach(el => {
+  const sib = [...el.parentElement.children].filter(c => c.hasAttribute('data-r'));
+  el.style.transitionDelay = (sib.length > 1 && el.parentElement.matches('.grid,.reels') ? sib.indexOf(el) * .12 : el.closest('.hero') ? .7 + sib.indexOf(el) * .12 : 0) + 's';
+  io.observe(el);
+});
+io.observe($('#foot'));
+
+/* product cards: smooth 3D tilt + glare */
+if (!reduce && matchMedia('(hover:hover)').matches) document.querySelectorAll('.card').forEach(c => {
+  c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    c.style.transform = `rotateX(${(.5 - y) * 10}deg) rotateY(${(x - .5) * 12}deg) translateY(-4px)`; c.style.setProperty('--mx', x*100 + '%'); c.style.setProperty('--my', y*100 + '%'); });
+  c.addEventListener('mouseleave', () => c.style.transform = '');
+});
+
+/* hero: parallax stickers + the plane flying across the sky with a contrail */
+const hero = $('#hero'), fls = [...document.querySelectorAll('.fl')], plane = $('#plane'), route = $('#route'), trail = $('#trailp');
+let mx = 0, my = 0, cx = 0, cy = 0, len = 0, W = 0, H = 0;
+addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
+function layoutRoute() {
+  W = hero.clientWidth; H = hero.clientHeight; const svg = $('#flight'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const k = W, A = Math.min(H, W * .55), y0 = W < 700 ? H * .17 : H * .19;   // a gentle S across the top third, from off-screen left to off-screen right
+  const d = `M ${-0.12*k} ${y0 + A*.08} C ${0.22*k} ${y0 - A*.12}, ${0.42*k} ${y0 + A*.12}, ${0.62*k} ${y0} S ${0.95*k} ${y0 - A*.11}, ${1.14*k} ${y0 - A*.03}`;
+  route.setAttribute('d', d); trail.setAttribute('d', d); len = route.getTotalLength();
+  const g = $('#trail'); g.setAttribute('x2', W);
+}
+const CYCLE = 14, FLY = 7.5;   // seconds: fly for 7.5s, then a quiet sky
+function frame(t) {
+  t /= 1000;
+  cx += (mx - cx) * .06; cy += (my - cy) * .06;
+  for (const f of fls) { const d = +f.dataset.depth; f.style.transform = `translate(${-cx * d}px, ${-cy * d}px)`; }
+  const sc = Math.min(1, scrollY / innerHeight);
+  hero.style.setProperty('--sc', sc);
+  if (len) {
+    const c = (t + 2) % CYCLE, p = Math.min(1, c / FLY), e = io3(p);
+    const at = e * len, pt = route.getPointAtLength(at), pt2 = route.getPointAtLength(Math.min(len, at + 2));
+    const ang = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI;
+    const vis = p < 1 ? 1 : 0;
+    plane.style.opacity = vis; plane.style.transform = `translate(${pt.x}px, ${pt.y}px) rotate(${ang + 45}deg)`;
+    /* contrail: the drawn part ends at the plane and fades away behind it */
+    const tail = Math.min(at, len * .45);
+    trail.style.strokeDasharray = `0 ${at - tail} ${tail} ${len}`;
+    trail.style.opacity = p < 1 ? .9 : Math.max(0, .9 - (c - FLY) * .6);
+  }
+  const gy = $('#giant'); const fr = $('#foot').getBoundingClientRect(); const fp = Math.min(1, Math.max(0, (innerHeight - fr.top) / fr.height));
+  gy.style.setProperty('--gy', `${30 - 30 * io3(fp)}%`);
+  requestAnimationFrame(frame);
+}
+if (!reduce) { layoutRoute(); addEventListener('resize', layoutRoute); requestAnimationFrame(frame); }
 </script>
 </body>
 </html>
