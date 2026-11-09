@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://skaysolutions.app/</loc><lastmod>2026-11-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
+    <loc>https://skaysolutions.app/</loc>
+    <video:video><video:thumbnail_loc>https://skaysolutions.app/assets/reels/context7.jpg</video:thumbnail_loc><video:title>Context7: aktuální dokumentace pro AI</video:title><video:description>Context7 stáhne aktuální dokumentaci přímo do promptu, takže AI přestane vymýšlet funkce.</video:description><video:content_loc>https://skaysolutions.app/assets/reels/context7.mp4</video:content_loc><video:duration>7</video:duration></video:video>
+    <video:video><video:thumbnail_loc>https://skaysolutions.app/assets/reels/mirofish.jpg</video:thumbnail_loc><video:title>MiroFish: tisíce AI testovacích uživatelů</video:title><video:description>MiroFish nasimuluje tisíce AI lidí, kteří o tvé appce diskutují, a dá ti report.</video:description><video:content_loc>https://skaysolutions.app/assets/reels/mirofish.mp4</video:content_loc><video:duration>7</video:duration></video:video><lastmod>2026-11-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
     <image:image><image:loc>https://skaysolutions.app/assets/img/og.png</image:loc></image:image>
-    <video:video><video:thumbnail_loc>https://skaysolutions.app/assets/reels/superpowers.jpg</video:thumbnail_loc><video:title>Superpowers pro Claude Code</video:title><video:description>Doplněk, který z Claude Code udělá pečlivého inženýra.</video:description><video:content_loc>https://skaysolutions.app/assets/reels/superpowers.mp4</video:content_loc><video:duration>7</video:duration></video:video>
-    <video:video><video:thumbnail_loc>https://skaysolutions.app/assets/reels/tasteskill.jpg</video:thumbnail_loc><video:title>Taste Skill: AI weby bez AI slopu</video:title><video:description>Skill, který AI zakáže dělat weby, co vypadají jako od AI.</video:description><video:content_loc>https://skaysolutions.app/assets/reels/tasteskill.mp4</video:content_loc><video:duration>7</video:duration></video:video>
-    <video:video><video:thumbnail_loc>https://skaysolutions.app/assets/reels/kitchen.jpg</video:thumbnail_loc><video:title>Kitchen: UI komponenty jako od Applu</video:title><video:description>Knihovna UI komponent s detaily jako od Applu.</video:description><video:content_loc>https://skaysolutions.app/assets/reels/kitchen.mp4</video:content_loc><video:duration>7</video:duration></video:video>
   </url>
 </urlset>
