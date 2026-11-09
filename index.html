@@ -42,14 +42,12 @@
 </script>
 <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif-latin-ext-400-italic.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1EFF}
-@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif-latin-400-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1EFF}
 @font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
   --cloud:#F9FBFF;--paper:#FFFFFF;--ink:#000;--muted:#6E6E73;--line:rgba(0,0,0,.08);
   --sky:#2B73F3;--sky-action:#1F63E8;--sky-light:#5C9BFF;--sky-soft:#BFDAFF;
-  --ios-label2:rgba(60,60,67,.6);--ios-sep:rgba(60,60,67,.36);--ios-grouped:#F2F2F7;--ios-fill:rgba(120,120,128,.12);--ios-gray5d:#2C2C2E;
+  --ios-label2:rgba(60,60,67,.8);--ios-sep:rgba(60,60,67,.36);--ios-grouped:#F2F2F7;--ios-fill:rgba(120,120,128,.12);--ios-gray5d:#2C2C2E;
   --night:#000;--night-raised:rgba(255,255,255,.09);--night-muted:#8E8E93;--live:#34C759;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
   --rounded:ui-rounded,"SF Pro Rounded",-apple-system,"Inter",sans-serif;
@@ -85,6 +83,7 @@ img,video{display:block;max-width:100%}
 .island .msg .t{min-width:0;overflow:hidden}
 .island .msg b{display:block;font-size:14px;line-height:18px;font-weight:600;letter-spacing:-.14px}
 .island .msg span{display:block;font-size:12.5px;line-height:16px;color:var(--night-muted);overflow:hidden;text-overflow:ellipsis}
+.island .msg a{position:relative}.island .msg a::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}
 .island .msg a{margin-left:auto;flex:none;display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:18px;background:#fff;color:#000;font-family:var(--rounded);font-weight:700;font-size:14px;line-height:1;pointer-events:auto;transition:transform .35s var(--ease)}
 .island .msg a:hover{transform:scale(1.05)}
 .top.open .island{width:min(400px,calc(100vw - 32px));height:54px;border-radius:27px}
@@ -131,7 +130,7 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
   transition:opacity .25s var(--ease),transform .5s var(--ease)}
 .btn:hover{opacity:.88}.btn:active{opacity:.6;transform:scale(.98)}
 .btn-primary{background:var(--sky-action);color:#fff}
-.btn-paper{background:rgba(31,99,232,.12);color:var(--sky-action)}
+.btn-paper{background:rgba(31,99,232,.12);color:#174FC2}
 .btn-glass{background:var(--ios-gray5d);color:#fff}
 .btn .ar{transition:transform .5s var(--ease)}.btn:hover .ar{transform:translateX(3px)}
 
@@ -184,7 +183,7 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 .ntf .ap img{width:22px;height:22px;filter:invert(1)}
 .ntf .bd{min-width:0;flex:1}
 .ntf .hd{display:flex;gap:5px;font-size:16px;line-height:20px;font-weight:600;letter-spacing:-.32px;font-feature-settings:"case" 1}
-.ntf .hd span{margin-left:auto;font-weight:400;font-size:13px;line-height:18px;letter-spacing:-.078px;color:rgba(60,60,67,.6);white-space:nowrap}
+.ntf .hd span{margin-left:auto;font-weight:400;font-size:13px;line-height:18px;letter-spacing:-.078px;color:rgba(0,0,0,.62);white-space:nowrap}
 .ntf .ms{font-size:13px;line-height:18px;letter-spacing:-.078px;color:#000}
 .ntf.n1{animation:ntf 7s var(--ease) infinite}
 .ntf.n2{margin-left:28px;animation:ntf2 7s var(--ease) infinite}
@@ -197,17 +196,6 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 .card .ft{display:flex;align-items:center;justify-content:space-between;padding:20px 28px 0}.card .price{font-size:20px;font-weight:500}
 .card .panel{margin:24px 8px 0;height:240px}.card .panel img{position:absolute;left:10%;top:28px;width:80%;border-radius:12px 12px 0 0;box-shadow:0 10px 30px -12px rgba(10,40,110,.35)}
 @media (max-width:820px){.drop{grid-template-columns:1fr}.drop .tx{padding:28px 24px 24px}.drop h3{font-size:24px}.drop .panel{min-height:0;margin:0 8px}.drop .panel{padding:18px 12px 24px}.ntf{max-width:none}.ntf.n2{margin-left:0}}
-/* ---------- stage: levitating burgundy phone (WebGL, /assets/js/phone3d.js) ---------- */
-#stage{position:relative;height:160vh;--p:0;--lev:0}
-.st-in{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
-.st-glow{position:absolute;left:50%;top:52%;width:min(1100px,140vw);aspect-ratio:1;transform:translate(-50%,-50%) scale(calc(.85 + var(--p)*.3));border-radius:50%;
-  background:radial-gradient(closest-side,rgba(110,26,51,.20),rgba(92,155,255,.16) 48%,rgba(191,218,255,0) 72%);filter:blur(10px)}
-#ph3d{position:relative;width:min(620px,96vw);height:min(88svh,780px);display:block;z-index:2}
-.st-sh{position:absolute;left:50%;top:calc(50% + min(36svh,330px));width:min(240px,48vw);height:34px;transform:translateX(-50%) scale(calc(1 - var(--lev)*.12));border-radius:50%;
-  background:radial-gradient(closest-side,rgba(40,10,25,.32),rgba(40,10,25,0));opacity:calc(.85 - var(--lev)*.15);z-index:1}
-#stage.no3d #ph3d,#stage.no3d .st-sh{display:none}
-@media (max-width:820px){#stage{height:130vh}}
-@media (prefers-reduced-motion:reduce){#stage{height:auto}.st-in{position:relative}}
 /* ---------- reels: each one plays inside an iPhone 14 Pro (screen 393x852 + status bar with Dynamic Island from the iOS 16 UI Kit) ---------- */
 .reels{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:760px;margin:0 auto}
 .reel{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:26px 18px 8px;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
@@ -309,13 +297,6 @@ footer .row{justify-content:flex-start;margin-top:22px}
   <div class="track" id="track"><span><img src="/assets/icons/claude.svg" alt="" width="30" height="30" loading="lazy">Claude</span><span><img src="/assets/icons/openai.svg" alt="" width="30" height="30" loading="lazy">OpenAI</span><span><img src="/assets/icons/codex.svg" alt="" width="30" height="30" loading="lazy">Codex</span><span><img src="/assets/icons/cursor.svg" alt="" width="30" height="30" loading="lazy">Cursor</span><span><img src="/assets/icons/github.svg" alt="" width="30" height="30" loading="lazy">GitHub</span><span><img src="/assets/icons/elevenlabs.svg" alt="" width="30" height="30" loading="lazy">ElevenLabs</span><span><img src="/assets/icons/figma.svg" alt="" width="30" height="30" loading="lazy">Figma</span><span><img src="/assets/icons/notion.svg" alt="" width="30" height="30" loading="lazy">Notion</span><span><img src="/assets/icons/supabase.svg" alt="" width="30" height="30" loading="lazy">Supabase</span><span><img src="/assets/icons/vercel.svg" alt="" width="30" height="30" loading="lazy">Vercel</span><span><img src="/assets/icons/stripe.svg" alt="" width="30" height="30" loading="lazy">Stripe</span></div>
 </div>
 
-<!-- Stage: levitating phone -->
-<section id="stage" aria-label="SKAY v kapse">
-  <div class="st-in">
-    <div class="st-glow" aria-hidden="true"></div>
-    <canvas id="ph3d" aria-hidden="true"></canvas><i class="st-sh" aria-hidden="true"></i>
-  </div>
-</section>
 
 <!-- Products -->
 <section id="produkty" class="wrap">
@@ -462,6 +443,5 @@ function frame(t) {
 }
 if (!reduce) { layoutRoute(); addEventListener('resize', layoutRoute); requestAnimationFrame(frame); }
 </script>
-<script type="module" src="/assets/js/phone3d.js"></script>
 </body>
 </html>
