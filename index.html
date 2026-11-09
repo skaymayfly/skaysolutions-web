@@ -48,6 +48,7 @@
 :root{
   --cloud:#F9FBFF;--paper:#FFFFFF;--ink:#000;--muted:#6E6E73;--line:rgba(0,0,0,.08);
   --sky:#2B73F3;--sky-action:#1F63E8;--sky-light:#5C9BFF;--sky-soft:#BFDAFF;
+  --ios-label2:rgba(60,60,67,.6);--ios-sep:rgba(60,60,67,.36);--ios-grouped:#F2F2F7;--ios-fill:rgba(120,120,128,.12);--ios-gray5d:#2C2C2E;
   --night:#000;--night-raised:rgba(255,255,255,.09);--night-muted:#8E8E93;--live:#34C759;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
   --rounded:ui-rounded,"SF Pro Rounded",-apple-system,"Inter",sans-serif;
@@ -124,14 +125,13 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(4deg)}}
 .lead{margin-top:18px;max-width:480px;font-size:20px;line-height:1.45;letter-spacing:-.2px;color:var(--muted)}
 .row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.btn{position:relative;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:22px;font-size:15.5px;font-weight:500;letter-spacing:-.31px;overflow:hidden;
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--sky-action);color:#fff;box-shadow:var(--shadow-primary)}
-.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:shine 4.5s var(--ease) infinite 2s}
-@keyframes shine{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.btn-paper{background:var(--paper);color:#363636;box-shadow:var(--shadow-soft)}
-.btn-glass{background:var(--night-raised);color:#fff;box-shadow:inset 0 6px 8px -6px rgba(255,255,255,.16),inset 0 -6px 8px -6px rgba(255,255,255,.08)}
+/* buttons: iOS 16 UI Kit "Button" (Filled / Tinted / Gray): 14px 20px, radius 14, SF Pro Text Semibold 17/22, -0.408 */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:14px;font-size:17px;line-height:22px;font-weight:600;letter-spacing:-.408px;font-feature-settings:"case" 1;
+  transition:opacity .25s var(--ease),transform .5s var(--ease)}
+.btn:hover{opacity:.88}.btn:active{opacity:.6;transform:scale(.98)}
+.btn-primary{background:var(--sky-action);color:#fff}
+.btn-paper{background:rgba(31,99,232,.12);color:var(--sky-action)}
+.btn-glass{background:var(--ios-gray5d);color:#fff}
 .btn .ar{transition:transform .5s var(--ease)}.btn:hover .ar{transform:translateX(3px)}
 
 /* floating stickers (position set by JS parallax) */
@@ -176,14 +176,15 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 .lock{position:absolute;left:0;right:0;top:34px;text-align:center;color:#fff;text-shadow:0 1px 12px rgba(10,40,110,.25)}
 .lock .d{font-size:15px;font-weight:600;letter-spacing:-.2px;opacity:.95}
 .lock .t{font-size:84px;line-height:1;font-weight:600;letter-spacing:-2px;margin-top:2px}
-.ntf{position:relative;width:100%;max-width:400px;border-radius:22px;padding:12px 14px;display:flex;gap:11px;align-items:flex-start;
-  background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 10px 30px -12px rgba(10,40,110,.35)}
-.ntf .ap{width:38px;height:38px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+/* notifications: iOS 16 UI Kit "Notification / Default" */
+.ntf{position:relative;width:100%;max-width:370px;border-radius:23px;padding:14px 18px 14px 14px;display:flex;gap:10px;align-items:center;
+  background:rgba(245,245,245,.62);-webkit-backdrop-filter:blur(40px) saturate(1.6);backdrop-filter:blur(40px) saturate(1.6);color:#000}
+.ntf .ap{width:38px;height:38px;border-radius:10px;flex:none;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
 .ntf .ap img{width:22px;height:22px;filter:invert(1)}
 .ntf .bd{min-width:0;flex:1}
-.ntf .hd{display:flex;font-size:13px;line-height:18px;font-weight:600;letter-spacing:-.1px}
-.ntf .hd span{margin-left:auto;font-weight:400;color:#6e6e73;font-size:12px}
-.ntf .ms{font-size:13px;line-height:18px;color:#1d1d1f;letter-spacing:-.1px}
+.ntf .hd{display:flex;gap:5px;font-size:16px;line-height:20px;font-weight:600;letter-spacing:-.32px;font-feature-settings:"case" 1}
+.ntf .hd span{margin-left:auto;font-weight:400;font-size:13px;line-height:18px;letter-spacing:-.078px;color:rgba(60,60,67,.6);white-space:nowrap}
+.ntf .ms{font-size:13px;line-height:18px;letter-spacing:-.078px;color:#000}
 .ntf.n1{animation:ntf 7s var(--ease) infinite}
 .ntf.n2{margin-left:28px;animation:ntf2 7s var(--ease) infinite}
 @keyframes ntf{0%{transform:translateY(-14px);opacity:0}8%,100%{transform:none;opacity:1}}
@@ -194,7 +195,7 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 .card .tx{padding:28px 28px 0}.card h3{font-size:20px;font-weight:500;letter-spacing:-.3px}.card p{margin-top:8px;font-size:16px;line-height:24px;color:rgba(0,0,0,.84)}
 .card .ft{display:flex;align-items:center;justify-content:space-between;padding:20px 28px 0}.card .price{font-size:20px;font-weight:500}
 .card .panel{margin:24px 8px 0;height:240px}.card .panel img{position:absolute;left:10%;top:28px;width:80%;border-radius:12px 12px 0 0;box-shadow:0 10px 30px -12px rgba(10,40,110,.35)}
-@media (max-width:820px){.drop{grid-template-columns:1fr}.drop .tx{padding:28px 24px 24px}.drop h3{font-size:24px}.drop .panel{min-height:0;margin:0 8px}.drop .panel{padding:18px 12px 24px}.ntf{max-width:none;padding:11px 12px;border-radius:20px}.ntf.n2{margin-left:0}.ntf .ap{width:34px;height:34px}.ntf .ms{font-size:13px}}
+@media (max-width:820px){.drop{grid-template-columns:1fr}.drop .tx{padding:28px 24px 24px}.drop h3{font-size:24px}.drop .panel{min-height:0;margin:0 8px}.drop .panel{padding:18px 12px 24px}.ntf{max-width:none}.ntf.n2{margin-left:0}}
 /* ---------- reels (taste-skill: quiet cards, the work itself in an inset panel) ---------- */
 .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .reel{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:8px;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
@@ -210,16 +211,25 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 .reel h3{font-size:18px;line-height:24px;font-weight:500;letter-spacing:-.3px}
 .reel p{margin-top:2px;font-size:15px;line-height:22px;color:rgba(0,0,0,.84)}
 @media (max-width:820px){.reels{grid-template-columns:1fr;gap:14px}.reel .vid{aspect-ratio:4/5}}
-/* ---------- FAQ ---------- */
-.faq{display:grid;gap:10px;max-width:760px}
-.qa{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:0 22px;transition:box-shadow .5s var(--ease)}
-.qa[open]{box-shadow:0 18px 40px -26px rgba(10,40,110,.28)}
-.qa summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 0;font-size:18px;font-weight:500;letter-spacing:-.3px}
+/* ---------- FAQ: iOS 16 UI Kit "DetailedTableView / Large" (inset grouped) ---------- */
+.faqwrap{max-width:760px;background:var(--ios-grouped);border-radius:24px;padding:22px 20px 18px}
+.faqwrap .gt{padding:0 0 8px 16px;font-size:15px;line-height:20px;font-weight:600;letter-spacing:-.5px;color:var(--ios-label2);text-transform:none}
+.faq{background:#fff;border-radius:10px;overflow:hidden}
+.qa{margin-left:16px;border-bottom:.5px solid var(--ios-sep)}.qa:last-child{border-bottom:0}
+.qa summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px;padding:6px 16px 6px 0;margin-left:-16px;padding-left:16px;transition:background .2s}
+.qa summary:active{background:rgba(209,209,214,.55)}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary i{margin-left:auto;position:relative;width:14px;height:14px;flex:none}
-.qa summary i::before,.qa summary i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;border-radius:1px;background:var(--ink);transition:transform .5s var(--ease)}
-.qa summary i::after{transform:rotate(90deg)}.qa[open] summary i::after{transform:rotate(0)}
-.qa p{padding:0 0 20px;font-size:16px;line-height:24px;color:rgba(0,0,0,.84);max-width:60ch}
+.qa .ic{width:30px;height:30px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center}
+.qa .ic svg{width:17px;height:17px}
+.qa .ct{flex:1;min-width:0;padding:8px 0 9px;display:flex;flex-direction:column;gap:2px}
+.qa .ct b{font-size:17px;line-height:22px;font-weight:600;letter-spacing:-.408px;font-feature-settings:"case" 1}
+.qa .ct small{font-size:15px;line-height:20px;letter-spacing:-.24px;color:var(--ios-label2)}
+.qa .chev{width:9px;height:15px;flex:none;color:rgba(60,60,67,.3);transition:transform .45s var(--ease)}
+.qa[open] .chev{transform:rotate(90deg)}
+.qa p{padding:2px 16px 14px 43px;font-size:15px;line-height:21px;letter-spacing:-.24px;color:rgba(0,0,0,.84);max-width:62ch}
+.faqwrap .gd{padding:8px 16px 0;font-size:12px;line-height:16px;color:var(--ios-label2)}
+.faqwrap .gd a{color:var(--sky-action)}
+@media (max-width:820px){.faqwrap{padding:18px 12px 14px;border-radius:20px;margin:0 -8px}}
 /* ---------- footer ---------- */
 footer{position:relative;margin-top:150px;background:var(--night);color:#fff;overflow:hidden;padding:40px 0 30px;min-height:660px}
 footer .me{width:76px;height:76px;border-radius:50%;background:var(--sky);overflow:hidden;transform-origin:50% 100%}
@@ -295,8 +305,8 @@ footer .row{justify-content:flex-start;margin-top:22px}
       <div class="row"><a class="btn btn-primary" data-cfg="instagram" href="https://www.instagram.com/222skay/">Sledovat na IG <span class="ar">→</span></a></div>
     </div>
     <div class="panel" aria-hidden="true">
-      <div class="ntf n1"><span class="ap"><img src="/assets/icons/instagram.svg" alt=""></span><div class="bd"><div class="hd">Instagram<span>teď</span></div><div class="ms"><b>SKAY</b> sdílí nový příspěvek: první drop je venku 🚀</div></div></div>
-      <div class="ntf n2"><span class="ap" style="background:#000"><img src="/assets/img/favicon.svg" alt="" style="filter:none;width:38px;height:38px;border-radius:9px"></span><div class="bd"><div class="hd">skaysolutions.app<span>teď</span></div><div class="ms">Drop #1 je venku. Mrkni na web.</div></div></div>
+      <div class="ntf n1"><span class="ap"><img src="/assets/icons/instagram.svg" alt=""></span><div class="bd"><div class="hd">SKAY · @222skay<span>teď</span></div><div class="ms">Sdílí nový příspěvek: první drop je venku 🚀</div></div></div>
+      <div class="ntf n2"><span class="ap" style="background:#000"><img src="/assets/img/favicon.svg" alt="" style="filter:none;width:38px;height:38px"></span><div class="bd"><div class="hd">skaysolutions.app<span>teď</span></div><div class="ms">Drop #1 je venku. Mrkni na web.</div></div></div>
     </div>
   </article></div>
 </section>
@@ -309,7 +319,7 @@ footer .row{justify-content:flex-start;margin-top:22px}
 <!-- FAQ -->
 <section id="faq" class="wrap">
   <div class="sh" data-r><h2>časté otázky <span>na SKAY</span></h2></div>
-  <div class="faq"><details class="qa" data-r><summary><span>Kdo je SKAY?</span><i aria-hidden="true"></i></summary><p>SKAY je tvář SKAY Solutions. Dělám vlastní AI nástroje a na Instagramu @222skay každý týden ukazuju AI nástroje a GitHub repa, které fakt šetří čas.</p></details><details class="qa" data-r><summary><span>Co budeš prodávat?</span><i aria-hidden="true"></i></summary><p>Vlastní AI nástroje a digitální balíčky pro AI workflow. První drop právě chystám a jako první ho ukážu na Instagramu.</p></details><details class="qa" data-r><summary><span>Jak dostanu odkaz z reelu?</span><i aria-hidden="true"></i></summary><p>Napiš do komentářů pod reelem slovo, které v něm zazní (třeba SUPER nebo VKUS), a pošlu ti odkaz do zpráv.</p></details><details class="qa" data-r><summary><span>Jsou nástroje z reelů zdarma?</span><i aria-hidden="true"></i></summary><p>Ty, které ukazuju z GitHubu, jsou open source a zdarma. U každého uvádím autora i licenci.</p></details></div>
+  <div class="faqwrap" data-r><div class="gt">Otázky a odpovědi</div><div class="faq"><details class="qa"><summary><span class="ic" style="background:#1F63E8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.2a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2Zm0 1.9c-4.2 0-7.5 2.2-7.5 4.6 0 .8.6 1.3 1.4 1.3h12.2c.8 0 1.4-.5 1.4-1.3 0-2.4-3.3-4.6-7.5-4.6Z" fill="#fff"/></svg></span><span class="ct"><b>Kdo je SKAY?</b><small>tvář SKAY Solutions</small></span><svg class="chev" viewBox="0 0 9 15" aria-hidden="true"><path d="M1.5 1.5 7.5 7.5 1.5 13.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>SKAY je tvář SKAY Solutions. Dělám vlastní AI nástroje a na Instagramu @222skay každý týden ukazuju AI nástroje a GitHub repa, které fakt šetří čas.</p></details><details class="qa"><summary><span class="ic" style="background:#FF9500"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 8V6.8a3.8 3.8 0 0 1 7.6 0V8h2.4c.7 0 1.3.6 1.3 1.3l-.6 9.6c-.1 1-.9 1.8-1.9 1.8H7c-1 0-1.8-.8-1.9-1.8l-.6-9.6C4.5 8.6 5.1 8 5.8 8h2.4Zm1.8 0h4V6.8a2 2 0 0 0-4 0V8Z" fill="#fff"/></svg></span><span class="ct"><b>Co budeš prodávat?</b><small>první drop se chystá</small></span><svg class="chev" viewBox="0 0 9 15" aria-hidden="true"><path d="M1.5 1.5 7.5 7.5 1.5 13.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Vlastní AI nástroje a digitální balíčky pro AI workflow. První drop právě chystám a jako první ho ukážu na Instagramu.</p></details><details class="qa"><summary><span class="ic" style="background:#34C759"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4c-4.7 0-8.5 3.1-8.5 7 0 2.1 1.1 4 2.9 5.3-.1 1.2-.6 2.4-1.5 3.3 1.9 0 3.6-.7 4.8-1.8.7.1 1.5.2 2.3.2 4.7 0 8.5-3.1 8.5-7S16.7 4 12 4Z" fill="#fff"/></svg></span><span class="ct"><b>Jak dostanu odkaz z reelu?</b><small>jedno slovo do komentářů</small></span><svg class="chev" viewBox="0 0 9 15" aria-hidden="true"><path d="M1.5 1.5 7.5 7.5 1.5 13.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Napiš do komentářů pod reelem slovo, které v něm zazní (třeba SUPER nebo VKUS), a pošlu ti odkaz do zpráv.</p></details><details class="qa"><summary><span class="ic" style="background:#FF2D55"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 9.5h15v3h-15zM5.5 12.5h13V19a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19z" fill="#fff"/><path d="M11 9.5v11h2v-11z" fill="#FF2D55"/><path d="M12 9.3c-1-2.6-2.7-4-4.1-3.6-1.3.4-1.2 2.4.6 3.4M12 9.3c1-2.6 2.7-4 4.1-3.6 1.3.4 1.2 2.4-.6 3.4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="ct"><b>Jsou nástroje z reelů zdarma?</b><small>open source z GitHubu</small></span><svg class="chev" viewBox="0 0 9 15" aria-hidden="true"><path d="M1.5 1.5 7.5 7.5 1.5 13.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Ty, které ukazuju z GitHubu, jsou open source a zdarma. U každého uvádím autora i licenci.</p></details></div><div class="gd">Nenašel jsi odpověď? <a data-cfg="instagram" href="https://www.instagram.com/222skay/">Napiš mi na Instagram.</a></div></div>
 </section>
 </main>
 
