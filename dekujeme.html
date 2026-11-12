@@ -62,7 +62,7 @@ h1{font-size:clamp(34px,7vw,56px);line-height:1.04;font-weight:500;letter-spacin
     <p class="lead">platba prošla. atlas si stáhni tady, fakturu ti Stripe poslal<span id="mail"></span>.</p>
     <div class="card"><img src="/assets/img/atlas-thumb.webp" alt=""><div><b id="pname">SKAY GitHub Atlas</b><span>PDF · 55 stran · A4. nahraj si ho do Clauda a ptej se ho, jak začít.</span></div></div>
     <div class="row"><button class="btn btn-primary" id="dl">Stáhnout PDF <span aria-hidden="true">↓</span></button></div>
-    <p class="note">tuhle stránku si ulož do záložek, atlas si přes ni stáhneš znovu kdykoli.<br>něco nefunguje? <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">napiš mi na Instagram</a>.</p>
+    <p class="note">tuhle stránku si ulož do záložek. atlas si přes ni stáhneš znovu, <span id="lim">celkem 5×, 30 dní od nákupu</span>.<br>něco nefunguje? <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">napiš mi na Instagram</a>.</p>
   </section>
 
   <!-- zaplaceno, ale automatické stažení teď nejde: pošlu ručně -->
@@ -82,6 +82,13 @@ h1{font-size:clamp(34px,7vw,56px);line-height:1.04;font-weight:500;letter-spacin
     <p class="note">jakmile platba projde, přijde ti od Stripu potvrzení a faktura e-mailem.</p>
   </section>
 
+  <!-- limit / platnost -->
+  <section id="s-limit" hidden>
+    <img class="emo" src="/assets/img/2601-fe0f.png" alt="" width="104" height="104">
+    <h1 id="lim-h">limit stažení je vyčerpaný</h1>
+    <p class="lead" id="lim-p">tenhle nákup už se stáhl 5×. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" style="color:var(--sky-action)">napiš mi na Instagram</a> a pošlu ti ho.</p>
+  </section>
+
   <!-- špatný odkaz -->
   <section id="s-bad" hidden>
     <img class="emo" src="/assets/img/2601-fe0f.png" alt="" width="104" height="104">
@@ -96,8 +103,8 @@ const API = "https://ufqbhonbmeqeurbyigbp.supabase.co/functions/v1/stazeni";
 const sid = new URLSearchParams(location.search).get("session_id") || "";
 const show = id => document.querySelectorAll("main > section").forEach(s => s.hidden = s.id !== id);
 
-async function ask() {
-  const r = await fetch(`${API}?session_id=${encodeURIComponent(sid)}`, { cache: "no-store" });
+async function ask(download) {
+  const r = await fetch(`${API}?session_id=${encodeURIComponent(sid)}${download ? "&akce=stahnout" : ""}`, { cache: "no-store" });
   let j = {}; try { j = await r.json(); } catch (e) {}
   return j;
 }
@@ -110,16 +117,36 @@ async function check() {
   if (j.ok) {
     if (j.produkt) document.getElementById("pname").textContent = j.produkt;
     if (j.email) document.getElementById("mail").textContent = " na " + j.email;
+    setLeft(j);
     return show("s-ok");
   }
+  if (j.chyba === "limit" || j.chyba === "vyprselo") return showLimit(j.chyba);
   if (j.chyba === "nezaplaceno") return show("s-wait");
   if (j.chyba === "neplatny_odkaz" || j.chyba === "nenalezeno") return show("s-bad");
   return show("s-manual"); // chybí klíč, výpadek Stripu nebo úložiště: zákazník zaplatil, pošlu ručně
 }
 
+function setLeft(j) {
+  if (typeof j.zbyva !== "number") return;
+  const d = j.platiDo ? new Date(j.platiDo).toLocaleDateString("cs-CZ") : "";
+  document.getElementById("lim").textContent = `ještě ${j.zbyva}×` + (d ? `, nejpozději do ${d}` : "");
+}
+function showLimit(kind) {
+  if (kind === "vyprselo") {
+    document.getElementById("lim-h").textContent = "odkaz už vypršel";
+    document.getElementById("lim-p").innerHTML = 'stahovat jde 30 dní od nákupu. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" style="color:var(--sky-action)">napiš mi na Instagram</a> a pošlu ti ho.';
+  }
+  show("s-limit");
+}
+
 document.getElementById("dl").addEventListener("click", async e => {
   const b = e.currentTarget; b.disabled = true;
-  try { const j = await ask(); if (j.ok && j.url) { location.href = j.url; } else { show("s-manual"); } }
+  try {
+    const j = await ask(true);
+    if (j.ok && j.url) { setLeft(j); location.href = j.url; }
+    else if (j.chyba === "limit" || j.chyba === "vyprselo") { showLimit(j.chyba); }
+    else { show("s-manual"); }
+  }
   catch (err) { show("s-manual"); }
   finally { setTimeout(() => b.disabled = false, 2500); }
 });
