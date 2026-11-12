@@ -96,8 +96,8 @@ img,video{display:block;max-width:100%}
 .topfade{position:fixed;top:0;left:0;right:0;height:calc(env(safe-area-inset-top,0px) + 104px);z-index:45;pointer-events:none;opacity:0;transition:opacity .4s var(--ease);
   background:linear-gradient(180deg,rgba(249,251,255,.97) 0%,rgba(249,251,255,.9) calc(env(safe-area-inset-top,0px) + 22px),rgba(249,251,255,.62) calc(env(safe-area-inset-top,0px) + 56px),rgba(249,251,255,.22) calc(env(safe-area-inset-top,0px) + 84px),rgba(249,251,255,0) 100%)}
 .scrolled .topfade{opacity:1}
-/* plný pruh pod stavovým řádkem iPhonu: Safari pak pod ním nerozmazává obsah stránky */
-body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--cloud);z-index:46;pointer-events:none}
+/* Safari 26 na iPhonu: plný (ne průhledný) fixní pruh u horní hrany = Safari obarví lištu nahoře touhle barvou místo rozmazaného obsahu */
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:max(env(safe-area-inset-top,0px),16px);background-color:#F9FBFF;z-index:46;pointer-events:none}
 /* ---------- preloader: the island is born in the middle and flies up into the header ---------- */
 #veil{position:fixed;inset:0;z-index:48;background:var(--cloud);pointer-events:none;transition:opacity .9s var(--ease)}
 #veil::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 45% at 50% 50%,rgba(191,218,255,.55),transparent 70%)}
