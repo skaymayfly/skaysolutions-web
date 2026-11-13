@@ -199,6 +199,12 @@ h1 .cl{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin
 .drop.prod .panel{padding:36px 0 0 36px;justify-content:flex-start;align-items:flex-start}
 .drop.prod .panel img{width:100%;height:auto;max-width:560px;border-radius:14px 0 0 0;box-shadow:0 24px 48px -16px rgba(10,40,110,.35)}
 .drop .pn{margin-top:12px;font-size:12.5px;line-height:18px;color:var(--muted);max-width:42ch}
+.promo{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:12px;padding:7px 12px;border-radius:12px;background:rgba(255,159,10,.12);color:#8a4b00;font-size:13.5px;line-height:18px}
+.promo b{font-weight:600;color:#6b3a00}
+.cd{font-variant-numeric:tabular-nums;font-weight:600;background:#fff;border-radius:8px;padding:1px 7px;color:#6b3a00}
+.atl-cta .promo-d{margin-top:8px;color:#FFD08A}
+.atl-cta .promo-d .cd{background:rgba(255,208,138,.16);color:#FFD08A}
+[data-promo].off{display:none}
 /* github atlas – prodejní blok */
 .drop .ck,.atl .ck{list-style:none;margin-top:18px;display:grid;gap:9px}
 .ck li{position:relative;padding-left:26px;font-size:15px;line-height:21px;color:rgba(0,0,0,.84)}
@@ -325,7 +331,7 @@ footer .row{justify-content:flex-start;margin-top:22px}
   <div class="island" id="island" role="button" tabindex="0" aria-expanded="false" aria-label="Novinky">
     <span class="dot"></span><span class="bar"></span>
     <div class="ld" aria-hidden="true"><img src="/assets/img/memoji.webp" alt=""><b>ladím oblohu…</b><span class="pg"><i></i></span></div>
-    <div class="msg"><img src="/assets/img/memoji.webp" alt=""><div class="t"><b>drop #1 je venku</b><span>github atlas, 47 AI rep v jednom PDF.</span></div><a href="#produkty">Mrknout</a></div>
+    <div class="msg"><img src="/assets/img/memoji.webp" alt=""><div class="t"><b>github atlas za 390 Kč</b><span>uváděcí cena jen do soboty, pak 490 Kč.</span></div><a href="#atlas">Mrknout</a></div>
   </div>
 </header>
 
@@ -359,6 +365,7 @@ footer .row{justify-content:flex-start;margin-top:22px}
     <div class="tx">
       <span class="lb">drop #1 · listopad 2026</span>
       <h3>github atlas</h3>
+      <div class="promo" data-promo><b>uváděcí cena 390 Kč</b> do soboty 14. 11. · od neděle 490 Kč <span class="cd" data-cd></span></div>
       <p>47 nejlepších open-source rep pro AI v jednom českém PDF. u každého víš, co dělá, na co ho použiješ a jak ho spustit. k tomu 6 hotových workflow a 60 tipů.</p>
       <ul class="ck">
         <li>55 stran, česky, bez vaty</li>
@@ -456,7 +463,7 @@ footer .row{justify-content:flex-start;margin-top:22px}
     </ul>
 
     <div class="atl-cta" data-r>
-      <div><b>github atlas</b><span>390 Kč · jednorázově · PDF hned po zaplacení</span></div>
+      <div><b>github atlas</b><span>390 Kč · jednorázově · PDF hned po zaplacení</span><span class="promo-d" data-promo>uváděcí cena do soboty 14. 11., od neděle 490 Kč <span class="cd" data-cd></span></span></div>
       <a class="btn btn-primary" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00">Koupit za 390 Kč <span class="ar">→</span></a>
       <small>ověřeno proti README a licencím každého repa k 11. 11. 2026 · faktura e-mailem · stažení až 5× během 30 dní</small>
     </div>
@@ -596,6 +603,21 @@ function frame(t) {
   requestAnimationFrame(frame);
 }
 if (!reduce) { layoutRoute(); addEventListener('resize', layoutRoute); requestAnimationFrame(frame); }
+
+// uváděcí cena: odpočet do konce soboty 14. 11. 2026 (Praha); pak se upozornění samo schová
+(function(){
+  const END = new Date('2026-11-15T00:00:00+01:00').getTime();
+  const els = document.querySelectorAll('[data-cd]'), promos = document.querySelectorAll('[data-promo]');
+  function tick(){
+    const ms = END - Date.now();
+    if (ms <= 0) { promos.forEach(p => p.classList.add('off')); return; }
+    const d = Math.floor(ms/864e5), h = Math.floor(ms/36e5)%24, m = Math.floor(ms/6e4)%60;
+    const t = 'zbývá ' + (d ? d + ' d ' : '') + h + ' h ' + String(m).padStart(2,'0') + ' min';
+    els.forEach(e => e.textContent = t);
+    setTimeout(tick, 30000);
+  }
+  tick();
+})();
 </script>
 </body>
 </html>
