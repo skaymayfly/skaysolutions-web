@@ -489,7 +489,7 @@ footer .row{justify-content:flex-start;margin-top:22px}
     </ul>
 
     <div class="atl-h" data-r><h3>na co se lidi ptají</h3></div>
-    <div class="atl-faq" data-r>
+    <div class="atl-faq">
       <details><summary>Jsou ta repa na GitHubu zdarma? Proč platit?</summary><p>Repa samotná zdarma jsou. Platíš za čas: z tisíců rep jsem vybral 47, které fakt stojí za to, ověřil je proti README a licencím a ke každému česky sepsal, na co je a jak ho rozjet. Místo večerů hledání máš hotový výběr a postup.</p></details>
       <details><summary>Musím umět programovat?</summary><p>Ne. U každého repa je náročnost 1–3 mráčky, takže hned vidíš, co zvládneš bez terminálu. Pro začátečníky je v atlasu slovníček a doporučená cesta: kapitola 01 a use case 3.</p></details>
       <details><summary>Jak atlas dostanu?</summary><p>Hned po zaplacení tě to přesměruje na stránku, kde si PDF stáhneš. Stáhnout ho můžeš až 5× během 30 dní. Fakturu ti pošle Stripe e-mailem.</p></details>
@@ -500,7 +500,7 @@ footer .row{justify-content:flex-start;margin-top:22px}
 
     <div class="atl-me" data-r>
       <img src="/assets/img/memoji.webp" alt="" width="64" height="64" loading="lazy">
-      <p><b>kdo za tím je</b>jsem Václav a SKAY je moje studio. každý týden na Instagramu ukazuju AI nástroje a GitHub repa, která fakt používám. atlas je všechno, co jsem k tomu nasbíral, v jednom PDF. <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">@222skay</a></p>
+      <p><b>kdo za tím je</b>za SKAY stojím já. každý týden na Instagramu ukazuju AI nástroje a GitHub repa, která fakt používám. atlas je všechno, co jsem k tomu nasbíral, v jednom PDF. <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">@222skay</a></p>
     </div>
 
     <div class="atl-cta" data-r>
@@ -678,6 +678,12 @@ fetch('https://ufqbhonbmeqeurbyigbp.supabase.co/functions/v1/prodeje?produkt=atl
   new IntersectionObserver(([e]) => { pastCard = !e.isIntersecting && e.boundingClientRect.top < 0; upd(); }).observe(card);
   new IntersectionObserver(([e]) => { atEnd = e.isIntersecting || e.boundingClientRect.top < 0; upd(); }).observe(end);
 })();
+
+// časté dotazy u atlasu: otevírání řízené skriptem (spolehlivé i v Safari na iPhonu)
+document.querySelectorAll('.atl-faq summary').forEach(sm => sm.addEventListener('click', e => {
+  e.preventDefault();
+  const d = sm.parentElement; d.open = !d.open;
+}));
 </script>
 </body>
 </html>
