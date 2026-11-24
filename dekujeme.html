@@ -1,55 +1,52 @@
 <!DOCTYPE html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6F3EC">
 <title>Díky za nákup — SKAY</title><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <style>
-@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1EFF}
+@font-face{font-family:"Bricolage";font-style:normal;font-weight:200 800;font-display:swap;src:url(/assets/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Bricolage";font-style:normal;font-weight:200 800;font-display:swap;src:url(/assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-:root{
-  --cloud:#F9FBFF;--paper:#FFFFFF;--ink:#000;--muted:#6E6E73;--line:rgba(0,0,0,.08);
-  --sky:#2B73F3;--sky-action:#1F63E8;--sky-light:#5C9BFF;--sky-soft:#BFDAFF;
-  --night:#000;--night-raised:rgba(255,255,255,.09);--night-muted:#8E8E93;--live:#34C759;
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
-  --rounded:ui-rounded,"SF Pro Rounded",-apple-system,"Inter",sans-serif;
-  --ease:cubic-bezier(.65,0,.35,1);
-  --shadow-primary:inset 0 0 0 1px rgba(255,255,255,.18),0 6px 16px rgba(31,99,232,.20);
-  --shadow-soft:0 6px 18px rgba(0,0,0,.06);
-  --shadow-float:0 24px 48px -16px rgba(10,40,110,.28);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--font);background:var(--cloud);color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:-.01em;overflow-x:hidden}
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1EFF}
+@font-face{font-family:"Caveat";font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/caveat-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Caveat";font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/caveat-latin-ext-700-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{--paper:#F6F3EC;--card:#FFFDF8;--ink:#111;--ink-2:#34322D;--muted:#6F6A5F;--line:rgba(17,17,17,.14);--lime:#C6F432;--display:"Bricolage",ui-sans-serif,system-ui,sans-serif;--body:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;--hand:"Caveat",cursive;--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
-img,video{display:block;max-width:100%}
-:focus-visible{outline:2px solid var(--sky-action);outline-offset:3px;border-radius:12px}
-.wrap{width:min(560px,100% - 40px);margin:0 auto}
-.page{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 0 60px}
-.emo{width:104px;height:104px;filter:drop-shadow(0 18px 24px rgba(10,40,110,.25));margin:0 auto 20px;animation:bob 5s var(--ease) infinite}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
-h1{font-size:clamp(34px,7vw,56px);line-height:1.04;font-weight:500;letter-spacing:-.035em}
-.lead{margin-top:16px;font-size:18px;line-height:1.5;letter-spacing:-.2px;color:var(--muted)}
-.lead b{color:var(--ink);font-weight:500}
-.card{margin-top:30px;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;gap:16px;align-items:center;text-align:left;box-shadow:var(--shadow-soft)}
-.card img{width:68px;height:96px;object-fit:cover;object-position:top;border-radius:8px;box-shadow:0 8px 18px -8px rgba(10,40,110,.4);flex:none}
-.card b{display:block;font-size:17px;font-weight:600;letter-spacing:-.3px}
-.card span{display:block;margin-top:4px;font-size:14px;line-height:1.45;color:var(--muted)}
-.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-.btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:24px;font-size:16px;font-weight:500;letter-spacing:-.31px;border:0;cursor:pointer;font-family:inherit;transition:transform .45s var(--ease),opacity .3s}
-.btn:hover{transform:translateY(-2px)}
-.btn[disabled]{opacity:.6;cursor:default;transform:none}
-.btn-primary{background:var(--sky-action);color:#fff;box-shadow:var(--shadow-primary)}
-.btn-paper{background:var(--paper);color:#363636;box-shadow:var(--shadow-soft)}
-.note{margin-top:18px;font-size:13px;line-height:1.5;color:var(--muted)}
-.note a{color:var(--sky-action)}
-.spin{width:22px;height:22px;border-radius:50%;border:2.5px solid var(--sky-soft);border-top-color:var(--sky-action);animation:sp 1s linear infinite;margin:26px auto 0}
-@keyframes sp{to{transform:rotate(360deg)}}
 [hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+.logo{position:fixed;top:20px;left:20px;font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.04em;display:inline-flex;align-items:baseline;z-index:5}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1.5px var(--ink);margin-left:3px;display:inline-block}
+.wrap{width:min(560px,100% - 40px);margin:0 auto}
+.page{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 0 64px}
+.emo{width:92px;height:92px;margin:0 auto 22px;border-radius:50%;background:var(--lime);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center;font-size:44px;line-height:1}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,8vw,56px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+.lead{margin-top:16px;font-size:18px;line-height:1.5;color:var(--ink-2)}
+.lead b{color:var(--ink);font-weight:700}
+.lead a,.note a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border-radius:999px;font-family:var(--body);font-size:17px;font-weight:700;border:2px solid var(--ink);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn-primary{background:var(--lime);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn-paper{background:var(--card);color:var(--ink)}
+.btn[disabled]{opacity:.6;cursor:default;transform:none}
+.note{margin-top:18px;font-size:14px;line-height:1.5;color:var(--muted)}
+.card{margin-top:30px;width:100%;background:var(--card);border:2px solid var(--ink);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:center;text-align:left;box-shadow:6px 6px 0 var(--ink)}
+.card img{width:64px;height:90px;object-fit:cover;object-position:top;border-radius:6px;border:1.5px solid var(--ink);flex:none}
+.card b{display:block;font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:-.02em}
+.card span{display:block;margin-top:4px;font-size:14px;line-height:1.45;color:var(--muted)}
+.spin{width:24px;height:24px;border-radius:50%;border:3px solid rgba(17,17,17,.15);border-top-color:var(--ink);animation:sp 1s linear infinite;margin:26px auto 0}
+@keyframes sp{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head><body>
+<a class="logo" href="/" aria-label="SKAY, domů">SKAY<i></i></a>
 <main class="page wrap" aria-live="polite">
 
   <!-- ověřuju -->
   <section id="s-load">
-    <img class="emo" src="/assets/img/2601-fe0f.png" alt="" width="104" height="104">
+    <div class="emo" aria-hidden="true">⏳</div>
     <h1>ověřuju platbu…</h1>
     <p class="lead">chvilku strpení, hledám tvoji objednávku.</p>
     <div class="spin" aria-hidden="true"></div>
@@ -57,7 +54,7 @@ h1{font-size:clamp(34px,7vw,56px);line-height:1.04;font-weight:500;letter-spacin
 
   <!-- hotovo, stáhni -->
   <section id="s-ok" hidden>
-    <img class="emo" src="/assets/img/1f680.png" alt="" width="104" height="104">
+    <div class="emo" aria-hidden="true">🎉</div>
     <h1>díky, je to tvoje!</h1>
     <p class="lead">platba prošla. atlas si stáhni tady, fakturu ti Stripe poslal<span id="mail"></span>.</p>
     <div class="card"><img src="/assets/img/atlas-thumb.webp" alt=""><div><b id="pname">SKAY GitHub Atlas</b><span>PDF · 55 stran · A4. nahraj si ho do Clauda a ptej se ho, jak začít.</span></div></div>
@@ -67,7 +64,7 @@ h1{font-size:clamp(34px,7vw,56px);line-height:1.04;font-weight:500;letter-spacin
 
   <!-- zaplaceno, ale automatické stažení teď nejde: pošlu ručně -->
   <section id="s-manual" hidden>
-    <img class="emo" src="/assets/img/2728.png" alt="" width="104" height="104">
+    <div class="emo" aria-hidden="true">✅</div>
     <h1>díky, platba prošla!</h1>
     <p class="lead">atlas ti pošlu <b>e-mailem do pár hodin</b> na adresu, kterou jsi zadal při platbě. faktura ti už přišla od Stripu.</p>
     <p class="note">nic nepřišlo do 24 hodin? mrkni do spamu, nebo <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">mi napiš na Instagram</a>.</p>
@@ -75,7 +72,7 @@ h1{font-size:clamp(34px,7vw,56px);line-height:1.04;font-weight:500;letter-spacin
 
   <!-- platba se ještě zpracovává -->
   <section id="s-wait" hidden>
-    <img class="emo" src="/assets/img/2601-fe0f.png" alt="" width="104" height="104">
+    <div class="emo" aria-hidden="true">⏳</div>
     <h1>platba se ještě zpracovává</h1>
     <p class="lead">některé platby (třeba Klarna) trvají chvilku déle. zkus to za minutu znovu.</p>
     <div class="row"><button class="btn btn-primary" id="retry">Zkusit znovu</button></div>
@@ -84,16 +81,16 @@ h1{font-size:clamp(34px,7vw,56px);line-height:1.04;font-weight:500;letter-spacin
 
   <!-- limit / platnost -->
   <section id="s-limit" hidden>
-    <img class="emo" src="/assets/img/2601-fe0f.png" alt="" width="104" height="104">
+    <div class="emo" aria-hidden="true">🔒</div>
     <h1 id="lim-h">limit stažení je vyčerpaný</h1>
-    <p class="lead" id="lim-p">tenhle nákup už se stáhl 5×. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" style="color:var(--sky-action)">napiš mi na Instagram</a> a pošlu ti ho.</p>
+    <p class="lead" id="lim-p">tenhle nákup už se stáhl 5×. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti ho.</p>
   </section>
 
   <!-- špatný odkaz -->
   <section id="s-bad" hidden>
-    <img class="emo" src="/assets/img/2601-fe0f.png" alt="" width="104" height="104">
+    <div class="emo" aria-hidden="true">🤔</div>
     <h1>tenhle odkaz nesedí</h1>
-    <p class="lead">nenašel jsem k němu žádnou platbu. pokud jsi platil, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" style="color:var(--sky-action)">napiš mi na Instagram</a> a pošlu ti atlas ručně.</p>
+    <p class="lead">nenašel jsem k němu žádnou platbu. pokud jsi platil, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti atlas ručně.</p>
     <div class="row"><a class="btn btn-paper" href="/#produkty">Zpátky na produkty</a></div>
   </section>
 
@@ -134,7 +131,7 @@ function setLeft(j) {
 function showLimit(kind) {
   if (kind === "vyprselo") {
     document.getElementById("lim-h").textContent = "odkaz už vypršel";
-    document.getElementById("lim-p").innerHTML = 'stahovat jde 30 dní od nákupu. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" style="color:var(--sky-action)">napiš mi na Instagram</a> a pošlu ti ho.';
+    document.getElementById("lim-p").innerHTML = 'stahovat jde 30 dní od nákupu. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti ho.';
   }
   show("s-limit");
 }

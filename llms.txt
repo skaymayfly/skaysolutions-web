@@ -1,6 +1,13 @@
 # SKAY
 
-> SKAY (SKAY Solutions) dělá vlastní AI nástroje a digitální produkty. Na Instagramu @222skay každý týden ukazuje AI nástroje, Claude Code skilly a GitHub repa, které šetří čas.
+> SKAY (SKAY Solutions) dělá digitální produkty pro práci s AI. Prvním produktem je GitHub Atlas: 47 nejlepších open-source repozitářů pro AI, automatizaci a tvorbu v jednom českém PDF (55 stran) za 390 Kč. Na Instagramu @222skay každý týden ukazuje AI nástroje a GitHub repa.
 
-- [Web](https://skaysolutions.app/): produkty, ukázky reelů a časté otázky
-- [Instagram @222skay](https://www.instagram.com/222skay/): reels s AI nástroji; napiš klíčové slovo do komentářů a přijde odkaz
+## GitHub Atlas
+
+- [Prodejní stránka](https://skaysolutions.app/): co v atlasu je, ukázky stránek, cena a časté otázky
+- Obsah: 9 kapitol (agenti na kód, skills a pluginy, MCP, automatizace, dokumenty → data, lokální AI, tvorba, stavění appek, učení), ke každému repu karta (co to je, použití, jak začít, příklad, tip, licence, náročnost), 6 use casů, 60 tipů, tahák licencí, checklist před instalací, slovníček
+- Platba: jednorázově přes Stripe (karta, Apple Pay, Klarna), PDF ke stažení hned po zaplacení, faktura e-mailem
+
+## Kontakt
+
+- [Instagram @222skay](https://www.instagram.com/222skay/)
