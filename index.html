@@ -40,7 +40,7 @@
 :root{
   --paper:#F6F3EC; --paper-2:#EEE9DE; --card:#FFFDF8;
   --ink:#111111; --ink-2:#34322D; --muted:#6F6A5F; --line:rgba(17,17,17,.14);
-  --lime:#C6F432; --lime-2:#B4E11F; --dark:#111111; --dark-2:#1C1C1A; --dark-line:rgba(255,255,255,.12);
+  --blue:#2B73F3; --blue-2:#1F63E8; --blue-soft:#CFE0FF; --blue-light:#7FAAFF; --dark:#111111; --dark-2:#1C1C1A; --dark-line:rgba(255,255,255,.12);
   --display:"Bricolage",ui-sans-serif,system-ui,sans-serif;
   --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --hand:"Caveat","Bradley Hand",cursive;
@@ -61,17 +61,17 @@ h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-h
 h2{font-size:clamp(36px,5.6vw,64px)}
 .lead{font-size:clamp(18px,2vw,21px);line-height:1.5;color:var(--ink-2);max-width:60ch;text-wrap:pretty}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-.kicker::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1.5px var(--ink)}
-.hl{background:linear-gradient(transparent 58%,var(--lime) 58%,var(--lime) 92%,transparent 92%);padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kicker::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 1.5px var(--ink)}
+.hl{background:linear-gradient(transparent 58%,var(--blue-soft) 58%,var(--blue-soft) 92%,transparent 92%);padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hand{font-family:var(--hand);font-weight:700;font-size:26px;line-height:1.05;color:var(--ink);letter-spacing:0}
 .arw{width:84px;height:42px;color:var(--ink)}
 .sh{margin-bottom:44px;display:grid;gap:16px}
 
 /* tlačítka */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border-radius:999px;font-family:var(--body);font-size:17px;font-weight:700;letter-spacing:-.01em;border:2px solid var(--ink);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s;white-space:nowrap}
-.btn-lime{background:var(--lime);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
-.btn-lime:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-.btn-lime:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+.btn-blue:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn-blue:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
 .btn-ink{background:var(--ink);color:var(--paper)}
 .btn-ink:hover{background:#000}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
@@ -87,7 +87,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .top.sc{border-bottom-color:var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.04em;display:inline-flex;align-items:baseline}
-.logo i{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1.5px var(--ink);margin-left:3px;display:inline-block}
+.logo i{width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 1.5px var(--ink);margin-left:3px;display:inline-block}
 .top nav{display:flex;align-items:center;gap:22px;font-size:15px;font-weight:600}
 .top nav a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px}
 .top .btn{min-height:42px;padding:0 18px;font-size:15px;box-shadow:3px 3px 0 var(--ink)}
@@ -104,7 +104,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .cover .t1 .arw{transform:scaleY(-1) rotate(8deg)}
 .cover .t2{right:-6px;bottom:-76px;flex-direction:row;align-items:flex-end;gap:6px}
 .cover .t2 .arw{transform:rotate(-120deg);width:56px;height:28px;margin-bottom:22px}
-.cover .price{position:absolute;right:-8px;top:-22px;background:var(--lime);border:2px solid var(--ink);border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:800;font-size:22px;transform:rotate(8deg);box-shadow:3px 3px 0 var(--ink)}
+.cover .price{position:absolute;right:-8px;top:-22px;background:var(--blue);color:#fff;border:2px solid var(--ink);border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:800;font-size:22px;transform:rotate(8deg);box-shadow:3px 3px 0 var(--ink)}
 
 /* pás nástrojů */
 .tools{padding:28px 0;border-block:1px solid var(--line);overflow:hidden}
@@ -121,13 +121,13 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .nums ul{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .nums li{background:var(--card);border:1.5px solid var(--ink);border-radius:var(--r);padding:22px 14px;text-align:center}
 .nums b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(40px,5vw,60px);line-height:1;letter-spacing:-.04em}
-.nums span{display:inline-block;margin-top:8px;font-size:15px;font-weight:600;background:var(--lime);padding:1px 8px;border-radius:6px}
+.nums span{display:inline-block;margin-top:8px;font-size:15px;font-weight:600;background:var(--blue);color:#fff;padding:1px 8px;border-radius:6px}
 
 /* problém */
 .pain{background:var(--paper-2)}
 .pain ol{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pain li{background:var(--card);border-radius:var(--r);padding:28px;border:1.5px solid var(--line)}
-.pain li em{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--lime);font-style:normal;font-family:var(--display);font-weight:800;margin-bottom:18px}
+.pain li em{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--blue-light);font-style:normal;font-family:var(--display);font-weight:800;margin-bottom:18px}
 .pain h3{font-size:25px;margin-bottom:10px;letter-spacing:-.02em}
 .pain p{color:var(--ink-2);font-size:16px}
 .pain .after{margin-top:36px;display:flex;align-items:center;gap:10px;justify-content:center}
@@ -149,14 +149,14 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .inside ol{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .inside li{display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:2px;align-items:start;background:var(--card);border:1.5px solid var(--ink);border-radius:var(--r);padding:18px 20px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .inside li:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
-.inside .n{grid-row:span 2;font-family:var(--display);font-weight:800;font-size:15px;width:40px;height:40px;border-radius:12px;background:var(--lime);border:1.5px solid var(--ink);display:grid;place-items:center}
+.inside .n{grid-row:span 2;font-family:var(--display);font-weight:800;font-size:15px;width:40px;height:40px;border-radius:12px;background:var(--blue);color:#fff;border:1.5px solid var(--ink);display:grid;place-items:center}
 .inside b{font-family:var(--display);font-size:20px;letter-spacing:-.02em;line-height:1.15}
 .inside small{font-size:14px;color:var(--muted);line-height:1.4}
 
 /* jak to funguje */
 .how ol{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
 .how li{position:relative;counter-increment:s;padding:24px;border-radius:var(--r);background:var(--card);border:1.5px solid var(--line)}
-.how li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--lime);font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:16px}
+.how li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--blue-light);font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:16px}
 .how h3{font-size:22px;margin-bottom:6px;letter-spacing:-.02em}
 .how p{font-size:15px;color:var(--ink-2)}
 
@@ -170,20 +170,20 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .pk{display:grid;grid-template-columns:5fr 6fr;gap:0;background:var(--dark-2);border:1px solid var(--dark-line);border-radius:24px;overflow:hidden}
 .pk.rev{grid-template-columns:6fr 5fr}
 .pk.rev figure{order:2}
-.pk figure{background:var(--lime);padding:32px 32px 0;display:flex;flex-direction:column;align-items:center;max-height:480px;overflow:hidden}
+.pk figure{background:var(--blue);padding:32px 32px 0;display:flex;flex-direction:column;align-items:center;max-height:480px;overflow:hidden}
 .pk figure img{width:100%;max-width:340px;border-radius:8px 8px 0 0;border:2px solid var(--ink);border-bottom:0}
-.pk figcaption{align-self:flex-start;font-family:var(--hand);font-size:24px;color:var(--ink);margin-bottom:12px}
+.pk figcaption{align-self:flex-start;font-family:var(--hand);font-size:24px;color:#fff;margin-bottom:12px}
 .pk .tx{padding:38px 34px}
-.pk .tx small{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lime)}
+.pk .tx small{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-light)}
 .pk h3{font-size:clamp(26px,3vw,32px);margin:10px 0 14px;letter-spacing:-.02em}
 .pk p{color:rgba(242,239,231,.8);font-size:16px}
 .ck{display:grid;gap:10px;margin-top:16px}
 .ck li{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.45}
-.ck svg{flex:none;width:22px;height:22px;padding:2px;border-radius:50%;background:var(--lime);color:var(--ink);margin-top:1px}
+.ck svg{flex:none;width:22px;height:22px;padding:2px;border-radius:50%;background:var(--blue);color:#fff;margin-top:1px}
 .ck b{font-weight:700}
 .uc{counter-reset:u;display:grid;gap:8px;margin-top:16px}
 .uc li{counter-increment:u;display:flex;align-items:center;gap:12px;font-weight:600}
-.uc li::before{content:counter(u);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--ink);font-family:var(--display);font-weight:800;font-size:14px}
+.uc li::before{content:counter(u);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--display);font-weight:800;font-size:14px}
 .dark code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;background:rgba(255,255,255,.1);padding:1px 7px;border-radius:6px}
 
 /* bonusy + pro koho */
@@ -198,13 +198,13 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 /* nabídka */
 .offer{background:var(--paper-2)}
 .box{max-width:760px;margin-inline:auto;background:var(--card);border:2px solid var(--ink);border-radius:28px;box-shadow:12px 12px 0 var(--ink);overflow:hidden}
-.box .hd{background:var(--lime);border-bottom:2px solid var(--ink);padding:26px 34px;display:flex;align-items:center;gap:22px}
+.box .hd{background:var(--blue);color:#fff;border-bottom:2px solid var(--ink);padding:26px 34px;display:flex;align-items:center;gap:22px}
 .box .hd img{width:76px;border-radius:6px;box-shadow:0 0 0 1.5px var(--ink);transform:rotate(-4deg);background:#fff}
 .box .hd h2{font-size:clamp(32px,4.4vw,44px)}
 .box .hd p{font-weight:600}
 .box .bd{padding:30px 34px 34px}
 .box .ck li{font-size:17px}
-.box .ck svg{background:var(--ink);color:var(--lime)}
+.box .ck svg{background:var(--ink);color:var(--blue-light)}
 .box .pr{display:flex;align-items:baseline;gap:12px;margin:28px 0 18px;flex-wrap:wrap}
 .box .pr b{font-family:var(--display);font-weight:800;font-size:64px;letter-spacing:-.04em;line-height:1}
 .box .pr span{color:var(--muted);font-weight:600}
@@ -219,7 +219,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .qa details{background:var(--card);border:1.5px solid var(--ink);border-radius:18px;padding:0 22px}
 .qa summary{list-style:none;cursor:pointer;padding:20px 36px 20px 0;font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em;position:relative}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary::after{content:"";position:absolute;right:0;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 5v10M5 10h10' stroke='%23111' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat;border:1.5px solid var(--ink);transition:transform .3s var(--ease)}
+.qa summary::after{content:"";position:absolute;right:0;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 5v10M5 10h10' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat;border:1.5px solid var(--ink);transition:transform .3s var(--ease)}
 .qa details[open] summary::after{transform:rotate(45deg)}
 .qa p{padding:0 0 20px;color:var(--ink-2)}
 .faq .more{margin-top:20px;text-align:center;color:var(--muted);font-size:15px}
@@ -229,7 +229,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .final{text-align:center}
 .final h2{font-size:clamp(40px,6.4vw,80px);max-width:16ch;margin:0 auto 22px}
 .final .lead{margin:0 auto 34px}
-.final .hand{color:var(--lime);margin-top:20px;font-size:28px}
+.final .hand{color:var(--blue-light);margin-top:20px;font-size:28px}
 
 /* instagram */
 .ig .reels{display:grid;grid-template-columns:repeat(2,minmax(0,320px));gap:18px;justify-content:center}
@@ -243,7 +243,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 /* patička */
 footer{background:var(--dark);color:rgba(242,239,231,.7);padding:64px 0 40px;font-size:14px}
 footer .big{font-family:var(--display);font-weight:800;color:#fff;font-size:clamp(80px,18vw,220px);letter-spacing:-.06em;line-height:.8;display:flex;align-items:baseline}
-footer .big i{width:.12em;height:.12em;border-radius:50%;background:var(--lime);margin-left:.04em}
+footer .big i{width:.12em;height:.12em;border-radius:50%;background:var(--blue);margin-left:.04em}
 footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;margin-top:40px;padding-top:24px;border-top:1px solid var(--dark-line)}
 footer a{color:#fff;font-weight:600}
 footer a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -251,16 +251,16 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 
 /* novinka nahoře */
 .ann{display:block;background:var(--ink);color:#F2EFE7;text-align:center;font-size:14px;font-weight:600;padding:9px 16px;line-height:1.35}
-.ann b{color:var(--lime)}
+.ann b{color:var(--blue-light)}
 .ann span{text-decoration:underline;text-underline-offset:3px}
-.ann:hover span{color:var(--lime)}
+.ann:hover span{color:var(--blue-light)}
 
 /* drop #2 – CRM */
 .drop2 .d2{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;background:var(--card);border:2px solid var(--ink);border-radius:28px;box-shadow:12px 12px 0 var(--ink);padding:40px}
 .drop2 .d2 img{width:100%;border-radius:18px;border:1.5px solid var(--ink)}
 .drop2 h2{font-size:clamp(34px,4.6vw,52px);margin:14px 0 14px}
 .drop2 .ck{margin:18px 0 26px}
-.drop2 .ck svg{background:var(--ink);color:var(--lime)}
+.drop2 .ck svg{background:var(--ink);color:var(--blue-light)}
 .drop2 .row{display:flex;flex-wrap:wrap;gap:12px}
 
 /* lišta Koupit na mobilu */
@@ -335,7 +335,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
       <a class="hide-m" href="#uvnitr">Co je uvnitř</a>
       <a class="hide-m" href="#faq">FAQ</a>
       <a class="hide-m" href="/crm">SKAY CRM</a>
-      <a class="btn btn-lime" href="#nabidka">GitHub Atlas <span class="ar">→</span></a>
+      <a class="btn btn-blue" href="#nabidka">GitHub Atlas <span class="ar">→</span></a>
     </nav>
   </div>
 </header>
@@ -348,7 +348,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
       <h1>Přestaň hledat na GitHubu. <span class="hl">47 AI rep</span>, která fakt fungují, v&nbsp;jednom PDF.</h1>
       <p class="lead">GitHub Atlas ti ke každému repu česky řekne, co dělá, na co ho použiješ a jak ho spustit. K tomu 6 hotových workflow a 60 tipů. Nahraješ ho do Clauda a on ti repa rovnou nainstaluje.</p>
       <div class="row">
-        <a class="btn btn-lime" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00">Chci GitHub Atlas za 390 Kč <span class="ar">→</span></a>
+        <a class="btn btn-blue" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00">Chci GitHub Atlas za 390 Kč <span class="ar">→</span></a>
         <a class="btn btn-ghost" href="#uvnitr">Co je uvnitř</a>
       </div>
       <p class="micro"><span>jednorázově</span><span>PDF hned po zaplacení</span><span>faktura e-mailem</span></p>
@@ -399,7 +399,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
       <p class="bub">každý týden ti na Instagramu ukazuju AI nástroje a repa, která stojí za to.</p>
       <p class="bub">jenže na GitHubu je jich tolik, že se v tom dá snadno ztratit. a většina návodů je anglicky.</p>
       <p class="bub">tak jsem 47 nejlepších sepsal do jednoho PDF. česky, ověřené proti README a s příkazy na zkopírování.</p>
-      <div class="me"><a class="btn btn-lime" href="#nabidka">Chci se podívat <span class="ar">→</span></a></div>
+      <div class="me"><a class="btn btn-blue" href="#nabidka">Chci se podívat <span class="ar">→</span></a></div>
     </div>
   </div>
 </section>
@@ -473,7 +473,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
         <ul class="ck"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>55stránkové PDF v češtině</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>47 rep v 9 kapitolách s kartou ke každému</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>6 use casů se schématem a promptem</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>60 tipů a triků</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>tahák licencí a checklist před instalací</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>4 prompty a návod na vlastní skill pro Clauda</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>faktura na tebe i na firmu</span></li></ul>
         <div class="pr"><b>390 Kč</b><span>jednorázově · méně než 9 Kč za repo</span></div>
         <p class="proof" data-proof hidden></p>
-        <a class="btn btn-lime" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00">Chci GitHub Atlas <span class="ar">→</span></a>
+        <a class="btn btn-blue" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00">Chci GitHub Atlas <span class="ar">→</span></a>
         <p class="micro"><span>platba přes Stripe</span><span>karta, Apple Pay, Klarna</span><span>stažení až 5× během 30 dní</span></p>
       </div>
     </div>
@@ -490,9 +490,9 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 
 <section class="dark final">
   <div class="wrap" data-r>
-    <h2>Zatímco ostatní scrollují GitHub, <span style="color:var(--lime)">ty už stavíš.</span></h2>
+    <h2>Zatímco ostatní scrollují GitHub, <span style="color:var(--blue-light)">ty už stavíš.</span></h2>
     <p class="lead">47 ověřených rep, 6 workflow a 60 tipů. Méně než 9 Kč za jedno repo.</p>
-    <a class="btn btn-lime" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00">Chci GitHub Atlas za 390 Kč <span class="ar">→</span></a>
+    <a class="btn btn-blue" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00">Chci GitHub Atlas za 390 Kč <span class="ar">→</span></a>
     <p class="hand">PDF máš za minutu ↑</p>
   </div>
 </section>
@@ -506,7 +506,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
         <h2>SKAY CRM: <span class="hl">tvoje CRM na míru</span></h2>
         <p class="lead">Obchody, kontakty a úkoly na jednom místě. Hotové CRM v jednom souboru, bez předplatného. S Claudem si ho předěláš přesně podle sebe.</p>
         <ul class="ck"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>pipeline obchodů</b> s hlídáním, co dlouho stojí</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>kontakty s historií</b> hovorů, e-mailů a schůzek</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>návod a 12 promptů</b> na úpravy s Claudem</span></li></ul>
-        <div class="row"><a class="btn btn-lime" href="/crm">Prohlédnout SKAY CRM <span class="ar">→</span></a><a class="btn btn-ghost" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Koupit za 990 Kč</a></div>
+        <div class="row"><a class="btn btn-blue" href="/crm">Prohlédnout SKAY CRM <span class="ar">→</span></a><a class="btn btn-ghost" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Koupit za 990 Kč</a></div>
       </div>
     </div>
   </div>
@@ -535,7 +535,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   </div>
 </footer>
 
-<div class="buybar" id="buybar" aria-hidden="true"><div><b>GitHub Atlas</b><span>390 Kč · PDF hned</span></div><a class="btn btn-lime" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00" tabindex="-1">Koupit <span class="ar">→</span></a></div>
+<div class="buybar" id="buybar" aria-hidden="true"><div><b>GitHub Atlas</b><span>390 Kč · PDF hned</span></div><a class="btn btn-blue" href="https://buy.stripe.com/4gM9AT2pkaUdd2Lbi85wI00" tabindex="-1">Koupit <span class="ar">→</span></a></div>
 
 <script>
 // hlavička: linka po odscrollování

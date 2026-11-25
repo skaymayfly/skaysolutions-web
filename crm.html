@@ -40,7 +40,7 @@
 :root{
   --paper:#F6F3EC; --paper-2:#EEE9DE; --card:#FFFDF8;
   --ink:#111111; --ink-2:#34322D; --muted:#6F6A5F; --line:rgba(17,17,17,.14);
-  --lime:#C6F432; --lime-2:#B4E11F; --dark:#111111; --dark-2:#1C1C1A; --dark-line:rgba(255,255,255,.12);
+  --blue:#2B73F3; --blue-2:#1F63E8; --blue-soft:#CFE0FF; --blue-light:#7FAAFF; --dark:#111111; --dark-2:#1C1C1A; --dark-line:rgba(255,255,255,.12);
   --display:"Bricolage",ui-sans-serif,system-ui,sans-serif;
   --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --hand:"Caveat","Bradley Hand",cursive;
@@ -61,17 +61,17 @@ h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-h
 h2{font-size:clamp(36px,5.6vw,64px)}
 .lead{font-size:clamp(18px,2vw,21px);line-height:1.5;color:var(--ink-2);max-width:60ch;text-wrap:pretty}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-.kicker::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1.5px var(--ink)}
-.hl{background:linear-gradient(transparent 58%,var(--lime) 58%,var(--lime) 92%,transparent 92%);padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kicker::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 1.5px var(--ink)}
+.hl{background:linear-gradient(transparent 58%,var(--blue-soft) 58%,var(--blue-soft) 92%,transparent 92%);padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hand{font-family:var(--hand);font-weight:700;font-size:26px;line-height:1.05;color:var(--ink);letter-spacing:0}
 .arw{width:84px;height:42px;color:var(--ink)}
 .sh{margin-bottom:44px;display:grid;gap:16px}
 
 /* tlačítka */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border-radius:999px;font-family:var(--body);font-size:17px;font-weight:700;letter-spacing:-.01em;border:2px solid var(--ink);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s;white-space:nowrap}
-.btn-lime{background:var(--lime);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
-.btn-lime:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-.btn-lime:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+.btn-blue:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn-blue:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
 .btn-ink{background:var(--ink);color:var(--paper)}
 .btn-ink:hover{background:#000}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
@@ -87,7 +87,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .top.sc{border-bottom-color:var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.04em;display:inline-flex;align-items:baseline}
-.logo i{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 1.5px var(--ink);margin-left:3px;display:inline-block}
+.logo i{width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 1.5px var(--ink);margin-left:3px;display:inline-block}
 .top nav{display:flex;align-items:center;gap:22px;font-size:15px;font-weight:600}
 .top nav a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px}
 .top .btn{min-height:42px;padding:0 18px;font-size:15px;box-shadow:3px 3px 0 var(--ink)}
@@ -104,7 +104,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .cover .t1 .arw{transform:scaleY(-1) rotate(8deg)}
 .cover .t2{right:-6px;bottom:-76px;flex-direction:row;align-items:flex-end;gap:6px}
 .cover .t2 .arw{transform:rotate(-120deg);width:56px;height:28px;margin-bottom:22px}
-.cover .price{position:absolute;right:-8px;top:-22px;background:var(--lime);border:2px solid var(--ink);border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:800;font-size:22px;transform:rotate(8deg);box-shadow:3px 3px 0 var(--ink)}
+.cover .price{position:absolute;right:-8px;top:-22px;background:var(--blue);color:#fff;border:2px solid var(--ink);border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:800;font-size:22px;transform:rotate(8deg);box-shadow:3px 3px 0 var(--ink)}
 
 /* pás nástrojů */
 .tools{padding:28px 0;border-block:1px solid var(--line);overflow:hidden}
@@ -121,13 +121,13 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .nums ul{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .nums li{background:var(--card);border:1.5px solid var(--ink);border-radius:var(--r);padding:22px 14px;text-align:center}
 .nums b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(40px,5vw,60px);line-height:1;letter-spacing:-.04em}
-.nums span{display:inline-block;margin-top:8px;font-size:15px;font-weight:600;background:var(--lime);padding:1px 8px;border-radius:6px}
+.nums span{display:inline-block;margin-top:8px;font-size:15px;font-weight:600;background:var(--blue);color:#fff;padding:1px 8px;border-radius:6px}
 
 /* problém */
 .pain{background:var(--paper-2)}
 .pain ol{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pain li{background:var(--card);border-radius:var(--r);padding:28px;border:1.5px solid var(--line)}
-.pain li em{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--lime);font-style:normal;font-family:var(--display);font-weight:800;margin-bottom:18px}
+.pain li em{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--blue-light);font-style:normal;font-family:var(--display);font-weight:800;margin-bottom:18px}
 .pain h3{font-size:25px;margin-bottom:10px;letter-spacing:-.02em}
 .pain p{color:var(--ink-2);font-size:16px}
 .pain .after{margin-top:36px;display:flex;align-items:center;gap:10px;justify-content:center}
@@ -149,14 +149,14 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .inside ol{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .inside li{display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:2px;align-items:start;background:var(--card);border:1.5px solid var(--ink);border-radius:var(--r);padding:18px 20px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .inside li:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
-.inside .n{grid-row:span 2;font-family:var(--display);font-weight:800;font-size:15px;width:40px;height:40px;border-radius:12px;background:var(--lime);border:1.5px solid var(--ink);display:grid;place-items:center}
+.inside .n{grid-row:span 2;font-family:var(--display);font-weight:800;font-size:15px;width:40px;height:40px;border-radius:12px;background:var(--blue);color:#fff;border:1.5px solid var(--ink);display:grid;place-items:center}
 .inside b{font-family:var(--display);font-size:20px;letter-spacing:-.02em;line-height:1.15}
 .inside small{font-size:14px;color:var(--muted);line-height:1.4}
 
 /* jak to funguje */
 .how ol{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
 .how li{position:relative;counter-increment:s;padding:24px;border-radius:var(--r);background:var(--card);border:1.5px solid var(--line)}
-.how li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--lime);font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:16px}
+.how li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--blue-light);font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:16px}
 .how h3{font-size:22px;margin-bottom:6px;letter-spacing:-.02em}
 .how p{font-size:15px;color:var(--ink-2)}
 
@@ -170,20 +170,20 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .pk{display:grid;grid-template-columns:5fr 6fr;gap:0;background:var(--dark-2);border:1px solid var(--dark-line);border-radius:24px;overflow:hidden}
 .pk.rev{grid-template-columns:6fr 5fr}
 .pk.rev figure{order:2}
-.pk figure{background:var(--lime);padding:32px 32px 0;display:flex;flex-direction:column;align-items:center;max-height:480px;overflow:hidden}
+.pk figure{background:var(--blue);padding:32px 32px 0;display:flex;flex-direction:column;align-items:center;max-height:480px;overflow:hidden}
 .pk figure img{width:100%;max-width:340px;border-radius:8px 8px 0 0;border:2px solid var(--ink);border-bottom:0}
-.pk figcaption{align-self:flex-start;font-family:var(--hand);font-size:24px;color:var(--ink);margin-bottom:12px}
+.pk figcaption{align-self:flex-start;font-family:var(--hand);font-size:24px;color:#fff;margin-bottom:12px}
 .pk .tx{padding:38px 34px}
-.pk .tx small{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lime)}
+.pk .tx small{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-light)}
 .pk h3{font-size:clamp(26px,3vw,32px);margin:10px 0 14px;letter-spacing:-.02em}
 .pk p{color:rgba(242,239,231,.8);font-size:16px}
 .ck{display:grid;gap:10px;margin-top:16px}
 .ck li{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.45}
-.ck svg{flex:none;width:22px;height:22px;padding:2px;border-radius:50%;background:var(--lime);color:var(--ink);margin-top:1px}
+.ck svg{flex:none;width:22px;height:22px;padding:2px;border-radius:50%;background:var(--blue);color:#fff;margin-top:1px}
 .ck b{font-weight:700}
 .uc{counter-reset:u;display:grid;gap:8px;margin-top:16px}
 .uc li{counter-increment:u;display:flex;align-items:center;gap:12px;font-weight:600}
-.uc li::before{content:counter(u);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--ink);font-family:var(--display);font-weight:800;font-size:14px}
+.uc li::before{content:counter(u);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--display);font-weight:800;font-size:14px}
 .dark code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;background:rgba(255,255,255,.1);padding:1px 7px;border-radius:6px}
 
 /* bonusy + pro koho */
@@ -198,13 +198,13 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 /* nabídka */
 .offer{background:var(--paper-2)}
 .box{max-width:760px;margin-inline:auto;background:var(--card);border:2px solid var(--ink);border-radius:28px;box-shadow:12px 12px 0 var(--ink);overflow:hidden}
-.box .hd{background:var(--lime);border-bottom:2px solid var(--ink);padding:26px 34px;display:flex;align-items:center;gap:22px}
+.box .hd{background:var(--blue);color:#fff;border-bottom:2px solid var(--ink);padding:26px 34px;display:flex;align-items:center;gap:22px}
 .box .hd img{width:76px;border-radius:6px;box-shadow:0 0 0 1.5px var(--ink);transform:rotate(-4deg);background:#fff}
 .box .hd h2{font-size:clamp(32px,4.4vw,44px)}
 .box .hd p{font-weight:600}
 .box .bd{padding:30px 34px 34px}
 .box .ck li{font-size:17px}
-.box .ck svg{background:var(--ink);color:var(--lime)}
+.box .ck svg{background:var(--ink);color:var(--blue-light)}
 .box .pr{display:flex;align-items:baseline;gap:12px;margin:28px 0 18px;flex-wrap:wrap}
 .box .pr b{font-family:var(--display);font-weight:800;font-size:64px;letter-spacing:-.04em;line-height:1}
 .box .pr span{color:var(--muted);font-weight:600}
@@ -219,7 +219,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .qa details{background:var(--card);border:1.5px solid var(--ink);border-radius:18px;padding:0 22px}
 .qa summary{list-style:none;cursor:pointer;padding:20px 36px 20px 0;font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em;position:relative}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary::after{content:"";position:absolute;right:0;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 5v10M5 10h10' stroke='%23111' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat;border:1.5px solid var(--ink);transition:transform .3s var(--ease)}
+.qa summary::after{content:"";position:absolute;right:0;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 5v10M5 10h10' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat;border:1.5px solid var(--ink);transition:transform .3s var(--ease)}
 .qa details[open] summary::after{transform:rotate(45deg)}
 .qa p{padding:0 0 20px;color:var(--ink-2)}
 .faq .more{margin-top:20px;text-align:center;color:var(--muted);font-size:15px}
@@ -229,7 +229,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 .final{text-align:center}
 .final h2{font-size:clamp(40px,6.4vw,80px);max-width:16ch;margin:0 auto 22px}
 .final .lead{margin:0 auto 34px}
-.final .hand{color:var(--lime);margin-top:20px;font-size:28px}
+.final .hand{color:var(--blue-light);margin-top:20px;font-size:28px}
 
 /* instagram */
 .ig .reels{display:grid;grid-template-columns:repeat(2,minmax(0,320px));gap:18px;justify-content:center}
@@ -243,7 +243,7 @@ h2{font-size:clamp(36px,5.6vw,64px)}
 /* patička */
 footer{background:var(--dark);color:rgba(242,239,231,.7);padding:64px 0 40px;font-size:14px}
 footer .big{font-family:var(--display);font-weight:800;color:#fff;font-size:clamp(80px,18vw,220px);letter-spacing:-.06em;line-height:.8;display:flex;align-items:baseline}
-footer .big i{width:.12em;height:.12em;border-radius:50%;background:var(--lime);margin-left:.04em}
+footer .big i{width:.12em;height:.12em;border-radius:50%;background:var(--blue);margin-left:.04em}
 footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;margin-top:40px;padding-top:24px;border-top:1px solid var(--dark-line)}
 footer a{color:#fff;font-weight:600}
 footer a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -314,11 +314,11 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 .hero-crm .browser{transform:rotate(-1.5deg)}
 .bb{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-bottom:2px solid var(--ink);background:var(--paper-2)}
 .bb i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink);background:var(--card)}
-.bb i:first-child{background:var(--lime)}
+.bb i:first-child{background:var(--blue)}
 .bb span{margin-left:8px;font-size:12px;font-weight:600;color:var(--muted)}
 .browser img{width:100%}
 .mock .phone{position:absolute;right:0;bottom:0;width:31%;border:2px solid var(--ink);border-radius:26px;overflow:hidden;box-shadow:7px 7px 0 var(--ink);transform:rotate(4deg);background:#fff}
-.mock .price{position:absolute;right:6px;top:-18px;background:var(--lime);border:2px solid var(--ink);border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:800;font-size:22px;transform:rotate(8deg);box-shadow:3px 3px 0 var(--ink);z-index:2}
+.mock .price{position:absolute;right:6px;top:-18px;background:var(--blue);border:2px solid var(--ink);border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:800;font-size:22px;transform:rotate(8deg);box-shadow:3px 3px 0 var(--ink);z-index:2;color:#fff}
 .mock .tag{position:absolute;display:flex;align-items:flex-end;gap:6px}
 .mock .t3{right:33%;bottom:-6px;flex-direction:row}
 .mock .t3 .arw{width:56px;height:28px;transform:rotate(-15deg);margin-bottom:12px}
@@ -327,19 +327,19 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 .vt{display:flex;gap:8px;flex-wrap:wrap}
 .vt button{font:700 15px/1 var(--body);height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--dark-line);background:transparent;color:#F2EFE7;cursor:pointer;transition:background .2s,border-color .2s}
 .vt button:hover{border-color:rgba(255,255,255,.4)}
-.vt button[aria-selected=true]{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.vt button[aria-selected=true]{background:var(--blue);color:#fff;border-color:var(--blue)}
 .vp{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:center}
-.browser.dk{border-color:#000;box-shadow:10px 10px 0 var(--lime)}
+.browser.dk{border-color:#000;box-shadow:10px 10px 0 var(--blue)}
 .browser.dk .bb{border-color:#000}
 .phones{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px}
-.phones img{width:100%;border-radius:22px;border:2px solid #000;box-shadow:6px 6px 0 var(--lime)}
+.phones img{width:100%;border-radius:22px;border:2px solid #000;box-shadow:6px 6px 0 var(--blue)}
 .vp .ck li{font-size:16px}
 
 .tailor{background:var(--paper-2)}
 .tw{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 .steps{counter-reset:s;display:grid;gap:12px}
 .steps li{counter-increment:s;position:relative;padding:20px 22px 20px 78px;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r)}
-.steps li::before{content:counter(s);position:absolute;left:20px;top:20px;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px}
+.steps li::before{content:counter(s);position:absolute;left:20px;top:20px;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--blue-light);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px}
 .steps h3{font-size:21px;letter-spacing:-.02em;margin-bottom:2px}
 .steps p{font-size:15px;color:var(--ink-2)}
 .pr-card{background:var(--card);border:2px solid var(--ink);border-radius:20px;box-shadow:8px 8px 0 var(--ink);padding:22px 24px;transform:rotate(1deg)}
@@ -348,7 +348,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 .pch{margin:22px 0 12px;text-align:right}
 .tagc{display:flex;flex-wrap:wrap;gap:8px}
 .tagc li{padding:7px 13px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);font-weight:600;font-size:14px}
-.tagc li:last-child{background:var(--lime)}
+.tagc li:last-child{background:var(--blue);color:#fff}
 
 .cmpw{overflow-x:auto;border:2px solid var(--ink);border-radius:22px;background:var(--card);box-shadow:8px 8px 0 var(--ink)}
 .cmp{width:100%;border-collapse:collapse;min-width:640px}
@@ -356,8 +356,8 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 .cmp thead th{border-top:0;font-family:var(--display);font-size:19px;letter-spacing:-.02em}
 .cmp tbody th{font-weight:700;width:22%}
 .cmp td{color:var(--ink-2)}
-.cmp .us{background:color-mix(in srgb,var(--lime) 34%,var(--card))}
-.cmp thead .us{background:var(--lime)}
+.cmp .us{background:color-mix(in srgb,var(--blue) 12%,var(--card))}
+.cmp thead .us{background:var(--blue);color:#fff}
 .cmpn{margin-top:20px;color:var(--muted);font-size:15px;max-width:70ch}
 
 .box .hd img.sq{width:76px;height:76px;object-fit:cover;border-radius:14px}
@@ -379,9 +379,9 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   .mock .price{font-size:18px;padding:8px 13px;right:0}
   .mock .t3{display:none}
   .browser{box-shadow:6px 6px 0 var(--ink)}
-  .browser.dk{box-shadow:6px 6px 0 var(--lime)}
+  .browser.dk{box-shadow:6px 6px 0 var(--blue)}
   .phones{gap:8px}
-  .phones img{border-radius:14px;box-shadow:3px 3px 0 var(--lime)}
+  .phones img{border-radius:14px;box-shadow:3px 3px 0 var(--blue)}
   .vt button{height:40px;padding:0 14px;font-size:14px}
   .steps li{padding:18px 18px 18px 70px}
   .steps li::before{left:16px;top:18px}
@@ -402,7 +402,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
       <a class="hide-m" href="#funkce">Co umí</a>
       <a class="hide-m" href="#na-miru">Na míru</a>
       <a class="hide-m" href="#faq">FAQ</a>
-      <a class="btn btn-lime" href="#nabidka">SKAY CRM <span class="ar">→</span></a>
+      <a class="btn btn-blue" href="#nabidka">SKAY CRM <span class="ar">→</span></a>
     </nav>
   </div>
 </header>
@@ -415,7 +415,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
       <h1>Obchody, kontakty a úkoly na jednom místě. <span class="hl">Bez předplatného.</span></h1>
       <p class="lead">SKAY CRM je hotové CRM v jednom souboru. Otevřeš ho v prohlížeči a za minutu v něm máš první obchod. A protože je tvoje, předěláš si ho s Claudem přesně podle sebe. Návod s 12 prompty je v balíčku.</p>
       <div class="row">
-        <a class="btn btn-lime" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Chci SKAY CRM za 990 Kč <span class="ar">→</span></a>
+        <a class="btn btn-blue" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Chci SKAY CRM za 990 Kč <span class="ar">→</span></a>
         <a class="btn btn-ghost" href="#ukazky">Ukaž mi ho</a>
       </div>
       <p class="micro"><span>jednorázově</span><span>stažení hned po zaplacení</span><span>faktura e-mailem</span></p>
@@ -466,7 +466,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
       <p class="bub">spousta freelancerů a malých firem CRM vůbec nemá. jede se z Excelu, poznámek v mobilu a z hlavy.</p>
       <p class="bub">přitom stačí vědět dvě věci: komu se dnes ozvat a kolik máš rozjednáno.</p>
       <p class="bub">tak jsem postavil CRM v jednom souboru. žádný účet, žádné předplatné. a s Claudem si ho předěláš na cokoli.</p>
-      <div class="me"><a class="btn btn-lime" href="#ukazky">Ukaž mi ho <span class="ar">→</span></a></div>
+      <div class="me"><a class="btn btn-blue" href="#ukazky">Ukaž mi ho <span class="ar">→</span></a></div>
     </div>
   </div>
 </section>
@@ -595,7 +595,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
         <ul class="ck"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>CRM v jednom souboru: Přehled, Obchody, Kontakty, Úkoly</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>funguje na počítači i na mobilu, bez instalace a účtu</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>import a export CSV, zálohy jedním klikem</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>10stránkový návod: spuštění, úpravy bez kódu i s Claudem</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>12 promptů na hotové úpravy + postup na online verzi pro tým</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>vzor CSV pro import kontaktů z Excelu</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>faktura na tebe i na firmu</span></li></ul>
         <div class="pr"><b>990 Kč</b><span>jednorázově · žádné měsíční poplatky</span></div>
         <p class="proof" data-proof hidden></p>
-        <a class="btn btn-lime" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Chci SKAY CRM <span class="ar">→</span></a>
+        <a class="btn btn-blue" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Chci SKAY CRM <span class="ar">→</span></a>
         <p class="micro"><span>platba přes Stripe</span><span>karta, Apple Pay, Klarna</span><span>stažení až 5× během 30 dní</span></p>
       </div>
     </div>
@@ -623,9 +623,9 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 
 <section class="dark final">
   <div class="wrap" data-r>
-    <h2>Přestaň hledat obchody v Excelu. <span style="color:var(--lime)">Měj je pod kontrolou.</span></h2>
+    <h2>Přestaň hledat obchody v Excelu. <span style="color:var(--blue-light)">Měj je pod kontrolou.</span></h2>
     <p class="lead">Hotové CRM, které si upravíš podle sebe. 990 Kč jednou, žádné měsíční poplatky.</p>
-    <a class="btn btn-lime" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Chci SKAY CRM za 990 Kč <span class="ar">→</span></a>
+    <a class="btn btn-blue" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Chci SKAY CRM za 990 Kč <span class="ar">→</span></a>
     <p class="hand">CRM máš za minutu ↑</p>
   </div>
 </section>
@@ -652,7 +652,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   </div>
 </footer>
 
-<div class="buybar" id="buybar" aria-hidden="true"><div><b>SKAY CRM</b><span>990 Kč · jednorázově</span></div><a class="btn btn-lime" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01" tabindex="-1">Koupit <span class="ar">→</span></a></div>
+<div class="buybar" id="buybar" aria-hidden="true"><div><b>SKAY CRM</b><span>990 Kč · jednorázově</span></div><a class="btn btn-blue" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01" tabindex="-1">Koupit <span class="ar">→</span></a></div>
 
 <script>
 const top_ = document.getElementById('top');
