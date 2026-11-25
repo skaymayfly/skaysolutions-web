@@ -1,12 +1,19 @@
 # SKAY
 
-> SKAY (SKAY Solutions) dělá digitální produkty pro práci s AI. Prvním produktem je GitHub Atlas: 47 nejlepších open-source repozitářů pro AI, automatizaci a tvorbu v jednom českém PDF (55 stran) za 390 Kč. Na Instagramu @222skay každý týden ukazuje AI nástroje a GitHub repa.
+> SKAY (SKAY Solutions) dělá digitální produkty pro práci s AI. Produkty: GitHub Atlas (47 nejlepších open-source repozitářů pro AI, automatizaci a tvorbu v jednom českém PDF, 55 stran, 390 Kč) a SKAY CRM (CRM na míru v jednom HTML souboru s návodem na úpravy s Claudem, 990 Kč). Na Instagramu @222skay každý týden ukazuje AI nástroje a GitHub repa.
 
 ## GitHub Atlas
 
 - [Prodejní stránka](https://skaysolutions.app/): co v atlasu je, ukázky stránek, cena a časté otázky
 - Obsah: 9 kapitol (agenti na kód, skills a pluginy, MCP, automatizace, dokumenty → data, lokální AI, tvorba, stavění appek, učení), ke každému repu karta (co to je, použití, jak začít, příklad, tip, licence, náročnost), 6 use casů, 60 tipů, tahák licencí, checklist před instalací, slovníček
 - Platba: jednorázově přes Stripe (karta, Apple Pay, Klarna), PDF ke stažení hned po zaplacení, faktura e-mailem
+
+## SKAY CRM
+
+- [Prodejní stránka](https://skaysolutions.app/crm): co CRM umí, ukázky obrazovek, srovnání, cena a časté otázky
+- Obsah balíčku: SKAY-CRM.html (přehled, pipeline obchodů, kontakty se štítky a historií komunikace, úkoly, import a export CSV, zálohy, mobilní verze), 10stránkový návod v PDF s 12 prompty na úpravy s Claudem, vzor CSV
+- Data se ukládají jen v prohlížeči uživatele, bez účtu a předplatného
+- Platba: jednorázově 990 Kč přes Stripe (karta, Apple Pay, Klarna), ZIP ke stažení hned po zaplacení, faktura e-mailem
 
 ## Kontakt
 

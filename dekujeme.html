@@ -34,6 +34,7 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,8vw,56px);lin
 .note{margin-top:18px;font-size:14px;line-height:1.5;color:var(--muted)}
 .card{margin-top:30px;width:100%;background:var(--card);border:2px solid var(--ink);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:center;text-align:left;box-shadow:6px 6px 0 var(--ink)}
 .card img{width:64px;height:90px;object-fit:cover;object-position:top;border-radius:6px;border:1.5px solid var(--ink);flex:none}
+.card img.sq{height:64px;border-radius:12px}
 .card b{display:block;font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:-.02em}
 .card span{display:block;margin-top:4px;font-size:14px;line-height:1.45;color:var(--muted)}
 .spin{width:24px;height:24px;border-radius:50%;border:3px solid rgba(17,17,17,.15);border-top-color:var(--ink);animation:sp 1s linear infinite;margin:26px auto 0}
@@ -56,17 +57,17 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,8vw,56px);lin
   <section id="s-ok" hidden>
     <div class="emo" aria-hidden="true">🎉</div>
     <h1>díky, je to tvoje!</h1>
-    <p class="lead">platba prošla. atlas si stáhni tady, fakturu ti Stripe poslal<span id="mail"></span>.</p>
-    <div class="card"><img src="/assets/img/atlas-thumb.webp" alt=""><div><b id="pname">SKAY GitHub Atlas</b><span>PDF · 55 stran · A4. nahraj si ho do Clauda a ptej se ho, jak začít.</span></div></div>
-    <div class="row"><button class="btn btn-primary" id="dl">Stáhnout PDF <span aria-hidden="true">↓</span></button></div>
-    <p class="note">tuhle stránku si ulož do záložek. atlas si přes ni stáhneš znovu, <span id="lim">celkem 5×, 30 dní od nákupu</span>.<br>něco nefunguje? <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">napiš mi na Instagram</a>.</p>
+    <p class="lead">platba prošla. <span id="what">produkt</span> si stáhni tady, fakturu ti Stripe poslal<span id="mail"></span>.</p>
+    <div class="card"><img id="pimg" src="/assets/img/atlas-thumb.webp" alt=""><div><b id="pname">SKAY GitHub Atlas</b><span id="pdesc">PDF · 55 stran · A4. nahraj si ho do Clauda a ptej se ho, jak začít.</span></div></div>
+    <div class="row"><button class="btn btn-primary" id="dl"><span id="dlt">Stáhnout PDF</span> <span aria-hidden="true">↓</span></button></div>
+    <p class="note">tuhle stránku si ulož do záložek. soubor si přes ni stáhneš znovu, <span id="lim">celkem 5×, 30 dní od nákupu</span>.<br>něco nefunguje? <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">napiš mi na Instagram</a>.</p>
   </section>
 
   <!-- zaplaceno, ale automatické stažení teď nejde: pošlu ručně -->
   <section id="s-manual" hidden>
     <div class="emo" aria-hidden="true">✅</div>
     <h1>díky, platba prošla!</h1>
-    <p class="lead">atlas ti pošlu <b>e-mailem do pár hodin</b> na adresu, kterou jsi zadal při platbě. faktura ti už přišla od Stripu.</p>
+    <p class="lead">soubor ti pošlu <b>e-mailem do pár hodin</b> na adresu, kterou jsi zadal při platbě. faktura ti už přišla od Stripu.</p>
     <p class="note">nic nepřišlo do 24 hodin? mrkni do spamu, nebo <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">mi napiš na Instagram</a>.</p>
   </section>
 
@@ -83,21 +84,25 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,8vw,56px);lin
   <section id="s-limit" hidden>
     <div class="emo" aria-hidden="true">🔒</div>
     <h1 id="lim-h">limit stažení je vyčerpaný</h1>
-    <p class="lead" id="lim-p">tenhle nákup už se stáhl 5×. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti ho.</p>
+    <p class="lead" id="lim-p">tenhle nákup už se stáhl 5×. pokud potřebuješ soubor znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti ho.</p>
   </section>
 
   <!-- špatný odkaz -->
   <section id="s-bad" hidden>
     <div class="emo" aria-hidden="true">🤔</div>
     <h1>tenhle odkaz nesedí</h1>
-    <p class="lead">nenašel jsem k němu žádnou platbu. pokud jsi platil, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti atlas ručně.</p>
-    <div class="row"><a class="btn btn-paper" href="/#produkty">Zpátky na produkty</a></div>
+    <p class="lead">nenašel jsem k němu žádnou platbu. pokud jsi platil, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti ho ručně.</p>
+    <div class="row"><a class="btn btn-paper" href="/">Zpátky na web</a></div>
   </section>
 
 </main>
 <script>
 const API = "https://ufqbhonbmeqeurbyigbp.supabase.co/functions/v1/stazeni";
 const sid = new URLSearchParams(location.search).get("session_id") || "";
+const PRODUKTY = {
+  pdf: { what: "atlas", desc: "PDF · 55 stran · A4. nahraj si ho do Clauda a ptej se ho, jak začít.", btn: "Stáhnout PDF", img: "/assets/img/atlas-thumb.webp" },
+  zip: { what: "CRM", desc: "ZIP · CRM v jednom souboru + návod PDF. rozbal ho a otevři SKAY-CRM.html, pak mrkni do návodu.", btn: "Stáhnout CRM", img: "/assets/img/crm-thumb.webp", sq: true },
+};
 const show = id => document.querySelectorAll("main > section").forEach(s => s.hidden = s.id !== id);
 
 async function ask(download) {
@@ -113,6 +118,11 @@ async function check() {
   try { j = await ask(); } catch (e) { return show("s-manual"); }
   if (j.ok) {
     if (j.produkt) document.getElementById("pname").textContent = j.produkt;
+    const P = PRODUKTY[j.typ] || PRODUKTY.pdf;
+    document.getElementById("what").textContent = P.what;
+    document.getElementById("pdesc").textContent = P.desc;
+    document.getElementById("dlt").textContent = P.btn;
+    const im = document.getElementById("pimg"); im.src = P.img; im.classList.toggle("sq", !!P.sq);
     if (j.email) document.getElementById("mail").textContent = " na " + j.email;
     setLeft(j);
     return show("s-ok");
@@ -131,7 +141,7 @@ function setLeft(j) {
 function showLimit(kind) {
   if (kind === "vyprselo") {
     document.getElementById("lim-h").textContent = "odkaz už vypršel";
-    document.getElementById("lim-p").innerHTML = 'stahovat jde 30 dní od nákupu. pokud potřebuješ atlas znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti ho.';
+    document.getElementById("lim-p").innerHTML = 'stahovat jde 30 dní od nákupu. pokud potřebuješ soubor znovu, <a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener" >napiš mi na Instagram</a> a pošlu ti ho.';
   }
   show("s-limit");
 }

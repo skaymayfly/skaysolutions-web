@@ -249,6 +249,20 @@ footer a{color:#fff;font-weight:600}
 footer a:hover{text-decoration:underline;text-underline-offset:3px}
 footer nav{display:flex;gap:20px;flex-wrap:wrap}
 
+/* novinka nahoře */
+.ann{display:block;background:var(--ink);color:#F2EFE7;text-align:center;font-size:14px;font-weight:600;padding:9px 16px;line-height:1.35}
+.ann b{color:var(--lime)}
+.ann span{text-decoration:underline;text-underline-offset:3px}
+.ann:hover span{color:var(--lime)}
+
+/* drop #2 – CRM */
+.drop2 .d2{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;background:var(--card);border:2px solid var(--ink);border-radius:28px;box-shadow:12px 12px 0 var(--ink);padding:40px}
+.drop2 .d2 img{width:100%;border-radius:18px;border:1.5px solid var(--ink)}
+.drop2 h2{font-size:clamp(34px,4.6vw,52px);margin:14px 0 14px}
+.drop2 .ck{margin:18px 0 26px}
+.drop2 .ck svg{background:var(--ink);color:var(--lime)}
+.drop2 .row{display:flex;flex-wrap:wrap;gap:12px}
+
 /* lišta Koupit na mobilu */
 .buybar{display:none}
 
@@ -276,6 +290,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   .pk figure img{max-width:260px}
   .pk .tx{padding:28px 22px 30px}
   .two{grid-template-columns:1fr;gap:48px}
+  .drop2 .d2{grid-template-columns:1fr;gap:28px;padding:26px}
   .top nav .hide-m{display:none}
 }
 @media (max-width:560px){
@@ -293,6 +308,8 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   .box .bd{padding:24px 22px 26px}
   .box .pr b{font-size:54px}
   .box{box-shadow:7px 7px 0 var(--ink)}
+  .drop2 .d2{box-shadow:7px 7px 0 var(--ink);padding:20px}
+  .drop2 .row .btn{width:100%}
   .ig .reels{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .reel div{padding:12px 12px 14px}
   .reel h3{font-size:18px}
@@ -310,12 +327,14 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 <body>
 <script>document.documentElement.classList.add('js')</script>
 
+<a class="ann" href="/crm"><b>Novinka:</b> SKAY CRM, tvoje CRM na míru bez předplatného. <span>Mrkni →</span></a>
 <header class="top" id="top">
   <div class="wrap">
     <a class="logo" href="/" aria-label="SKAY, domů">SKAY<i></i></a>
     <nav aria-label="Hlavní">
       <a class="hide-m" href="#uvnitr">Co je uvnitř</a>
       <a class="hide-m" href="#faq">FAQ</a>
+      <a class="hide-m" href="/crm">SKAY CRM</a>
       <a class="btn btn-lime" href="#nabidka">GitHub Atlas <span class="ar">→</span></a>
     </nav>
   </div>
@@ -478,6 +497,21 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   </div>
 </section>
 
+<section class="drop2" id="crm">
+  <div class="wrap">
+    <div class="d2" data-r>
+      <a href="/crm" aria-label="SKAY CRM"><img src="/assets/img/crm-cover.webp" alt="SKAY CRM na počítači i na mobilu" width="1000" height="1000" loading="lazy"></a>
+      <div>
+        <span class="kicker">drop #2 · novinka</span>
+        <h2>SKAY CRM: <span class="hl">tvoje CRM na míru</span></h2>
+        <p class="lead">Obchody, kontakty a úkoly na jednom místě. Hotové CRM v jednom souboru, bez předplatného. S Claudem si ho předěláš přesně podle sebe.</p>
+        <ul class="ck"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>pipeline obchodů</b> s hlídáním, co dlouho stojí</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>kontakty s historií</b> hovorů, e-mailů a schůzek</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>návod a 12 promptů</b> na úpravy s Claudem</span></li></ul>
+        <div class="row"><a class="btn btn-lime" href="/crm">Prohlédnout SKAY CRM <span class="ar">→</span></a><a class="btn btn-ghost" href="https://buy.stripe.com/6oU8wP7JE8M54wfbi85wI01">Koupit za 990 Kč</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="ig" id="ig">
   <div class="wrap">
     <div class="sh" data-r><span class="kicker">instagram</span><h2>Co ukazuju na IG</h2><p class="lead">Každý týden jeden nástroj nebo repo, které fakt pomůže. Napíšeš slovo do komentářů a pošlu ti odkaz.</p></div>
@@ -494,7 +528,7 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
   <div class="wrap">
     <div class="big" aria-hidden="true">SKAY<i></i></div>
     <div class="row">
-      <nav aria-label="Patička"><a href="#nabidka">GitHub Atlas</a><a href="#faq">FAQ</a><a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">Instagram</a></nav>
+      <nav aria-label="Patička"><a href="#nabidka">GitHub Atlas</a><a href="/crm">SKAY CRM</a><a href="#faq">FAQ</a><a href="https://www.instagram.com/222skay/" target="_blank" rel="noopener">Instagram</a></nav>
       <p>Provozovatel: Václav Jonák, IČO 23722657, Střední 366, 253 03 Chýně · nejsem plátce DPH</p>
       <p>© 2026 SKAY Solutions</p>
     </div>
@@ -530,7 +564,7 @@ fetch('https://ufqbhonbmeqeurbyigbp.supabase.co/functions/v1/prodeje?produkt=atl
 // lišta Koupit na mobilu: po úvodu se ukáže, u nabídky a v závěru zmizí
 (function(){
   const bar = document.getElementById('buybar'), hero = document.getElementById('atlas');
-  const stops = [document.getElementById('nabidka'), document.querySelector('.final')];
+  const stops = [document.getElementById('nabidka'), document.querySelector('.final'), document.getElementById('crm')];
   if (!('IntersectionObserver' in window)) return;
   let past = false; const vis = new Set();
   const upd = () => { const on = past && vis.size === 0; bar.classList.toggle('on', on); bar.setAttribute('aria-hidden', on ? 'false' : 'true'); bar.querySelector('a').tabIndex = on ? 0 : -1; };
